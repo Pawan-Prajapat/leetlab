@@ -48,6 +48,21 @@ export type Playlist = $Result.DefaultSelection<Prisma.$PlaylistPayload>
  * 
  */
 export type ProblemInPlaylist = $Result.DefaultSelection<Prisma.$ProblemInPlaylistPayload>
+/**
+ * Model Hackathon
+ * 
+ */
+export type Hackathon = $Result.DefaultSelection<Prisma.$HackathonPayload>
+/**
+ * Model HackathonProblem
+ * 
+ */
+export type HackathonProblem = $Result.DefaultSelection<Prisma.$HackathonProblemPayload>
+/**
+ * Model HackathonParticipant
+ * 
+ */
+export type HackathonParticipant = $Result.DefaultSelection<Prisma.$HackathonParticipantPayload>
 
 /**
  * Enums
@@ -55,7 +70,8 @@ export type ProblemInPlaylist = $Result.DefaultSelection<Prisma.$ProblemInPlayli
 export namespace $Enums {
   export const UserRole: {
   ADMIN: 'ADMIN',
-  USER: 'USER'
+  USER: 'USER',
+  ORG: 'ORG'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
@@ -273,6 +289,36 @@ export class PrismaClient<
     * ```
     */
   get problemInPlaylist(): Prisma.ProblemInPlaylistDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hackathon`: Exposes CRUD operations for the **Hackathon** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Hackathons
+    * const hackathons = await prisma.hackathon.findMany()
+    * ```
+    */
+  get hackathon(): Prisma.HackathonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hackathonProblem`: Exposes CRUD operations for the **HackathonProblem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HackathonProblems
+    * const hackathonProblems = await prisma.hackathonProblem.findMany()
+    * ```
+    */
+  get hackathonProblem(): Prisma.HackathonProblemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hackathonParticipant`: Exposes CRUD operations for the **HackathonParticipant** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HackathonParticipants
+    * const hackathonParticipants = await prisma.hackathonParticipant.findMany()
+    * ```
+    */
+  get hackathonParticipant(): Prisma.HackathonParticipantDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -719,7 +765,10 @@ export namespace Prisma {
     TestCaseResult: 'TestCaseResult',
     ProblemSolved: 'ProblemSolved',
     Playlist: 'Playlist',
-    ProblemInPlaylist: 'ProblemInPlaylist'
+    ProblemInPlaylist: 'ProblemInPlaylist',
+    Hackathon: 'Hackathon',
+    HackathonProblem: 'HackathonProblem',
+    HackathonParticipant: 'HackathonParticipant'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -738,7 +787,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "playlist" | "problemInPlaylist"
+      modelProps: "user" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "playlist" | "problemInPlaylist" | "hackathon" | "hackathonProblem" | "hackathonParticipant"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1260,6 +1309,228 @@ export namespace Prisma {
           }
         }
       }
+      Hackathon: {
+        payload: Prisma.$HackathonPayload<ExtArgs>
+        fields: Prisma.HackathonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HackathonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HackathonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          findFirst: {
+            args: Prisma.HackathonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HackathonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          findMany: {
+            args: Prisma.HackathonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>[]
+          }
+          create: {
+            args: Prisma.HackathonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          createMany: {
+            args: Prisma.HackathonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HackathonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>[]
+          }
+          delete: {
+            args: Prisma.HackathonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          update: {
+            args: Prisma.HackathonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          deleteMany: {
+            args: Prisma.HackathonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HackathonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HackathonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>[]
+          }
+          upsert: {
+            args: Prisma.HackathonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonPayload>
+          }
+          aggregate: {
+            args: Prisma.HackathonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHackathon>
+          }
+          groupBy: {
+            args: Prisma.HackathonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HackathonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HackathonCountArgs<ExtArgs>
+            result: $Utils.Optional<HackathonCountAggregateOutputType> | number
+          }
+        }
+      }
+      HackathonProblem: {
+        payload: Prisma.$HackathonProblemPayload<ExtArgs>
+        fields: Prisma.HackathonProblemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HackathonProblemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HackathonProblemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          findFirst: {
+            args: Prisma.HackathonProblemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HackathonProblemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          findMany: {
+            args: Prisma.HackathonProblemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>[]
+          }
+          create: {
+            args: Prisma.HackathonProblemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          createMany: {
+            args: Prisma.HackathonProblemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HackathonProblemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>[]
+          }
+          delete: {
+            args: Prisma.HackathonProblemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          update: {
+            args: Prisma.HackathonProblemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          deleteMany: {
+            args: Prisma.HackathonProblemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HackathonProblemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HackathonProblemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>[]
+          }
+          upsert: {
+            args: Prisma.HackathonProblemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonProblemPayload>
+          }
+          aggregate: {
+            args: Prisma.HackathonProblemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHackathonProblem>
+          }
+          groupBy: {
+            args: Prisma.HackathonProblemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HackathonProblemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HackathonProblemCountArgs<ExtArgs>
+            result: $Utils.Optional<HackathonProblemCountAggregateOutputType> | number
+          }
+        }
+      }
+      HackathonParticipant: {
+        payload: Prisma.$HackathonParticipantPayload<ExtArgs>
+        fields: Prisma.HackathonParticipantFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HackathonParticipantFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HackathonParticipantFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          findFirst: {
+            args: Prisma.HackathonParticipantFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HackathonParticipantFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          findMany: {
+            args: Prisma.HackathonParticipantFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>[]
+          }
+          create: {
+            args: Prisma.HackathonParticipantCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          createMany: {
+            args: Prisma.HackathonParticipantCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HackathonParticipantCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>[]
+          }
+          delete: {
+            args: Prisma.HackathonParticipantDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          update: {
+            args: Prisma.HackathonParticipantUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          deleteMany: {
+            args: Prisma.HackathonParticipantDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HackathonParticipantUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HackathonParticipantUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>[]
+          }
+          upsert: {
+            args: Prisma.HackathonParticipantUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HackathonParticipantPayload>
+          }
+          aggregate: {
+            args: Prisma.HackathonParticipantAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHackathonParticipant>
+          }
+          groupBy: {
+            args: Prisma.HackathonParticipantGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HackathonParticipantGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HackathonParticipantCountArgs<ExtArgs>
+            result: $Utils.Optional<HackathonParticipantCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1351,6 +1622,9 @@ export namespace Prisma {
     problemSolved?: ProblemSolvedOmit
     playlist?: PlaylistOmit
     problemInPlaylist?: ProblemInPlaylistOmit
+    hackathon?: HackathonOmit
+    hackathonProblem?: HackathonProblemOmit
+    hackathonParticipant?: HackathonParticipantOmit
   }
 
   /* Types for Logging */
@@ -1449,6 +1723,8 @@ export namespace Prisma {
     submission: number
     problemSolved: number
     playlist: number
+    org: number
+    hackathonParticipant: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1456,6 +1732,8 @@ export namespace Prisma {
     submission?: boolean | UserCountOutputTypeCountSubmissionArgs
     problemSolved?: boolean | UserCountOutputTypeCountProblemSolvedArgs
     playlist?: boolean | UserCountOutputTypeCountPlaylistArgs
+    org?: boolean | UserCountOutputTypeCountOrgArgs
+    hackathonParticipant?: boolean | UserCountOutputTypeCountHackathonParticipantArgs
   }
 
   // Custom InputTypes
@@ -1497,6 +1775,20 @@ export namespace Prisma {
     where?: PlaylistWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOrgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHackathonParticipantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonParticipantWhereInput
+  }
+
 
   /**
    * Count Type ProblemCountOutputType
@@ -1506,12 +1798,14 @@ export namespace Prisma {
     submission: number
     solvedBy: number
     problemsPlaylists: number
+    hackathonProblem: number
   }
 
   export type ProblemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | ProblemCountOutputTypeCountSubmissionArgs
     solvedBy?: boolean | ProblemCountOutputTypeCountSolvedByArgs
     problemsPlaylists?: boolean | ProblemCountOutputTypeCountProblemsPlaylistsArgs
+    hackathonProblem?: boolean | ProblemCountOutputTypeCountHackathonProblemArgs
   }
 
   // Custom InputTypes
@@ -1544,6 +1838,13 @@ export namespace Prisma {
    */
   export type ProblemCountOutputTypeCountProblemsPlaylistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProblemInPlaylistWhereInput
+  }
+
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeCountHackathonProblemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonProblemWhereInput
   }
 
 
@@ -1610,6 +1911,55 @@ export namespace Prisma {
 
 
   /**
+   * Count Type HackathonCountOutputType
+   */
+
+  export type HackathonCountOutputType = {
+    problems: number
+    participants: number
+    problemList: number
+  }
+
+  export type HackathonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    problems?: boolean | HackathonCountOutputTypeCountProblemsArgs
+    participants?: boolean | HackathonCountOutputTypeCountParticipantsArgs
+    problemList?: boolean | HackathonCountOutputTypeCountProblemListArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * HackathonCountOutputType without action
+   */
+  export type HackathonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonCountOutputType
+     */
+    select?: HackathonCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * HackathonCountOutputType without action
+   */
+  export type HackathonCountOutputTypeCountProblemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonProblemWhereInput
+  }
+
+  /**
+   * HackathonCountOutputType without action
+   */
+  export type HackathonCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonParticipantWhereInput
+  }
+
+  /**
+   * HackathonCountOutputType without action
+   */
+  export type HackathonCountOutputTypeCountProblemListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1630,6 +1980,11 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole | null
     password: string | null
+    orgName: string | null
+    orgSize: string | null
+    orgcountry: string | null
+    orgWebsite: string | null
+    orgphone: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1641,6 +1996,11 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole | null
     password: string | null
+    orgName: string | null
+    orgSize: string | null
+    orgcountry: string | null
+    orgWebsite: string | null
+    orgphone: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1652,6 +2012,11 @@ export namespace Prisma {
     image: number
     role: number
     password: number
+    orgName: number
+    orgSize: number
+    orgcountry: number
+    orgWebsite: number
+    orgphone: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1665,6 +2030,11 @@ export namespace Prisma {
     image?: true
     role?: true
     password?: true
+    orgName?: true
+    orgSize?: true
+    orgcountry?: true
+    orgWebsite?: true
+    orgphone?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1676,6 +2046,11 @@ export namespace Prisma {
     image?: true
     role?: true
     password?: true
+    orgName?: true
+    orgSize?: true
+    orgcountry?: true
+    orgWebsite?: true
+    orgphone?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1687,6 +2062,11 @@ export namespace Prisma {
     image?: true
     role?: true
     password?: true
+    orgName?: true
+    orgSize?: true
+    orgcountry?: true
+    orgWebsite?: true
+    orgphone?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1771,6 +2151,11 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole
     password: string
+    orgName: string | null
+    orgSize: string | null
+    orgcountry: string | null
+    orgWebsite: string | null
+    orgphone: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1799,12 +2184,19 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     password?: boolean
+    orgName?: boolean
+    orgSize?: boolean
+    orgcountry?: boolean
+    orgWebsite?: boolean
+    orgphone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     problems?: boolean | User$problemsArgs<ExtArgs>
     submission?: boolean | User$submissionArgs<ExtArgs>
     problemSolved?: boolean | User$problemSolvedArgs<ExtArgs>
     playlist?: boolean | User$playlistArgs<ExtArgs>
+    org?: boolean | User$orgArgs<ExtArgs>
+    hackathonParticipant?: boolean | User$hackathonParticipantArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1815,6 +2207,11 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     password?: boolean
+    orgName?: boolean
+    orgSize?: boolean
+    orgcountry?: boolean
+    orgWebsite?: boolean
+    orgphone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1826,6 +2223,11 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     password?: boolean
+    orgName?: boolean
+    orgSize?: boolean
+    orgcountry?: boolean
+    orgWebsite?: boolean
+    orgphone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1837,16 +2239,23 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     password?: boolean
+    orgName?: boolean
+    orgSize?: boolean
+    orgcountry?: boolean
+    orgWebsite?: boolean
+    orgphone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "image" | "role" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "image" | "role" | "password" | "orgName" | "orgSize" | "orgcountry" | "orgWebsite" | "orgphone" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | User$problemsArgs<ExtArgs>
     submission?: boolean | User$submissionArgs<ExtArgs>
     problemSolved?: boolean | User$problemSolvedArgs<ExtArgs>
     playlist?: boolean | User$playlistArgs<ExtArgs>
+    org?: boolean | User$orgArgs<ExtArgs>
+    hackathonParticipant?: boolean | User$hackathonParticipantArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1859,6 +2268,8 @@ export namespace Prisma {
       submission: Prisma.$SubmissionPayload<ExtArgs>[]
       problemSolved: Prisma.$ProblemSolvedPayload<ExtArgs>[]
       playlist: Prisma.$PlaylistPayload<ExtArgs>[]
+      org: Prisma.$HackathonPayload<ExtArgs>[]
+      hackathonParticipant: Prisma.$HackathonParticipantPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1867,6 +2278,11 @@ export namespace Prisma {
       image: string | null
       role: $Enums.UserRole
       password: string
+      orgName: string | null
+      orgSize: string | null
+      orgcountry: string | null
+      orgWebsite: string | null
+      orgphone: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2267,6 +2683,8 @@ export namespace Prisma {
     submission<T extends User$submissionArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     problemSolved<T extends User$problemSolvedArgs<ExtArgs> = {}>(args?: Subset<T, User$problemSolvedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     playlist<T extends User$playlistArgs<ExtArgs> = {}>(args?: Subset<T, User$playlistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    org<T extends User$orgArgs<ExtArgs> = {}>(args?: Subset<T, User$orgArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    hackathonParticipant<T extends User$hackathonParticipantArgs<ExtArgs> = {}>(args?: Subset<T, User$hackathonParticipantArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2302,6 +2720,11 @@ export namespace Prisma {
     readonly image: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'UserRole'>
     readonly password: FieldRef<"User", 'String'>
+    readonly orgName: FieldRef<"User", 'String'>
+    readonly orgSize: FieldRef<"User", 'String'>
+    readonly orgcountry: FieldRef<"User", 'String'>
+    readonly orgWebsite: FieldRef<"User", 'String'>
+    readonly orgphone: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -2788,6 +3211,54 @@ export namespace Prisma {
   }
 
   /**
+   * User.org
+   */
+  export type User$orgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    where?: HackathonWhereInput
+    orderBy?: HackathonOrderByWithRelationInput | HackathonOrderByWithRelationInput[]
+    cursor?: HackathonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HackathonScalarFieldEnum | HackathonScalarFieldEnum[]
+  }
+
+  /**
+   * User.hackathonParticipant
+   */
+  export type User$hackathonParticipantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    where?: HackathonParticipantWhereInput
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    cursor?: HackathonParticipantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HackathonParticipantScalarFieldEnum | HackathonParticipantScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2822,6 +3293,7 @@ export namespace Prisma {
     description: string | null
     difficulty: $Enums.Difficulty | null
     userId: string | null
+    hackathonId: string | null
     constraints: string | null
     hints: string | null
     editorial: string | null
@@ -2835,6 +3307,7 @@ export namespace Prisma {
     description: string | null
     difficulty: $Enums.Difficulty | null
     userId: string | null
+    hackathonId: string | null
     constraints: string | null
     hints: string | null
     editorial: string | null
@@ -2849,6 +3322,7 @@ export namespace Prisma {
     difficulty: number
     tags: number
     userId: number
+    hackathonId: number
     examples: number
     constraints: number
     hints: number
@@ -2868,6 +3342,7 @@ export namespace Prisma {
     description?: true
     difficulty?: true
     userId?: true
+    hackathonId?: true
     constraints?: true
     hints?: true
     editorial?: true
@@ -2881,6 +3356,7 @@ export namespace Prisma {
     description?: true
     difficulty?: true
     userId?: true
+    hackathonId?: true
     constraints?: true
     hints?: true
     editorial?: true
@@ -2895,6 +3371,7 @@ export namespace Prisma {
     difficulty?: true
     tags?: true
     userId?: true
+    hackathonId?: true
     examples?: true
     constraints?: true
     hints?: true
@@ -2986,6 +3463,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags: string[]
     userId: string
+    hackathonId: string | null
     examples: JsonValue
     constraints: string
     hints: string | null
@@ -3021,6 +3499,7 @@ export namespace Prisma {
     difficulty?: boolean
     tags?: boolean
     userId?: boolean
+    hackathonId?: boolean
     examples?: boolean
     constraints?: boolean
     hints?: boolean
@@ -3031,9 +3510,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
     submission?: boolean | Problem$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problem$problemsPlaylistsArgs<ExtArgs>
+    hackathonProblem?: boolean | Problem$hackathonProblemArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
@@ -3044,6 +3525,7 @@ export namespace Prisma {
     difficulty?: boolean
     tags?: boolean
     userId?: boolean
+    hackathonId?: boolean
     examples?: boolean
     constraints?: boolean
     hints?: boolean
@@ -3054,6 +3536,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
   export type ProblemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3063,6 +3546,7 @@ export namespace Prisma {
     difficulty?: boolean
     tags?: boolean
     userId?: boolean
+    hackathonId?: boolean
     examples?: boolean
     constraints?: boolean
     hints?: boolean
@@ -3073,6 +3557,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
   export type ProblemSelectScalar = {
@@ -3082,6 +3567,7 @@ export namespace Prisma {
     difficulty?: boolean
     tags?: boolean
     userId?: boolean
+    hackathonId?: boolean
     examples?: boolean
     constraints?: boolean
     hints?: boolean
@@ -3093,28 +3579,34 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "difficulty" | "tags" | "userId" | "examples" | "constraints" | "hints" | "editorial" | "testcases" | "codeSnippets" | "referenceSolutions" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
+  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "difficulty" | "tags" | "userId" | "hackathonId" | "examples" | "constraints" | "hints" | "editorial" | "testcases" | "codeSnippets" | "referenceSolutions" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
   export type ProblemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
     submission?: boolean | Problem$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problem$problemsPlaylistsArgs<ExtArgs>
+    hackathonProblem?: boolean | Problem$hackathonProblemArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
   }
   export type ProblemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    hackathon?: boolean | Problem$hackathonArgs<ExtArgs>
   }
 
   export type $ProblemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Problem"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      hackathon: Prisma.$HackathonPayload<ExtArgs> | null
       submission: Prisma.$SubmissionPayload<ExtArgs>[]
       solvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
       problemsPlaylists: Prisma.$ProblemInPlaylistPayload<ExtArgs>[]
+      hackathonProblem: Prisma.$HackathonProblemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3123,6 +3615,7 @@ export namespace Prisma {
       difficulty: $Enums.Difficulty
       tags: string[]
       userId: string
+      hackathonId: string | null
       examples: Prisma.JsonValue
       constraints: string
       hints: string | null
@@ -3527,9 +4020,11 @@ export namespace Prisma {
   export interface Prisma__ProblemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    hackathon<T extends Problem$hackathonArgs<ExtArgs> = {}>(args?: Subset<T, Problem$hackathonArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     submission<T extends Problem$submissionArgs<ExtArgs> = {}>(args?: Subset<T, Problem$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     solvedBy<T extends Problem$solvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problem$solvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     problemsPlaylists<T extends Problem$problemsPlaylistsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$problemsPlaylistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    hackathonProblem<T extends Problem$hackathonProblemArgs<ExtArgs> = {}>(args?: Subset<T, Problem$hackathonProblemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3565,6 +4060,7 @@ export namespace Prisma {
     readonly difficulty: FieldRef<"Problem", 'Difficulty'>
     readonly tags: FieldRef<"Problem", 'String[]'>
     readonly userId: FieldRef<"Problem", 'String'>
+    readonly hackathonId: FieldRef<"Problem", 'String'>
     readonly examples: FieldRef<"Problem", 'Json'>
     readonly constraints: FieldRef<"Problem", 'String'>
     readonly hints: FieldRef<"Problem", 'String'>
@@ -3970,6 +4466,25 @@ export namespace Prisma {
   }
 
   /**
+   * Problem.hackathon
+   */
+  export type Problem$hackathonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    where?: HackathonWhereInput
+  }
+
+  /**
    * Problem.submission
    */
   export type Problem$submissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4039,6 +4554,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
+  }
+
+  /**
+   * Problem.hackathonProblem
+   */
+  export type Problem$hackathonProblemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    where?: HackathonProblemWhereInput
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    cursor?: HackathonProblemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HackathonProblemScalarFieldEnum | HackathonProblemScalarFieldEnum[]
   }
 
   /**
@@ -9699,6 +10238,3329 @@ export namespace Prisma {
 
 
   /**
+   * Model Hackathon
+   */
+
+  export type AggregateHackathon = {
+    _count: HackathonCountAggregateOutputType | null
+    _min: HackathonMinAggregateOutputType | null
+    _max: HackathonMaxAggregateOutputType | null
+  }
+
+  export type HackathonMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    orgId: string | null
+    startTime: Date | null
+    endTime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HackathonMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    orgId: string | null
+    startTime: Date | null
+    endTime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HackathonCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    orgId: number
+    startTime: number
+    endTime: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HackathonMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    orgId?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HackathonMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    orgId?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HackathonCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    orgId?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HackathonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Hackathon to aggregate.
+     */
+    where?: HackathonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hackathons to fetch.
+     */
+    orderBy?: HackathonOrderByWithRelationInput | HackathonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HackathonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hackathons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hackathons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Hackathons
+    **/
+    _count?: true | HackathonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HackathonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HackathonMaxAggregateInputType
+  }
+
+  export type GetHackathonAggregateType<T extends HackathonAggregateArgs> = {
+        [P in keyof T & keyof AggregateHackathon]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHackathon[P]>
+      : GetScalarType<T[P], AggregateHackathon[P]>
+  }
+
+
+
+
+  export type HackathonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonWhereInput
+    orderBy?: HackathonOrderByWithAggregationInput | HackathonOrderByWithAggregationInput[]
+    by: HackathonScalarFieldEnum[] | HackathonScalarFieldEnum
+    having?: HackathonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HackathonCountAggregateInputType | true
+    _min?: HackathonMinAggregateInputType
+    _max?: HackathonMaxAggregateInputType
+  }
+
+  export type HackathonGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    orgId: string
+    startTime: Date
+    endTime: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: HackathonCountAggregateOutputType | null
+    _min: HackathonMinAggregateOutputType | null
+    _max: HackathonMaxAggregateOutputType | null
+  }
+
+  type GetHackathonGroupByPayload<T extends HackathonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HackathonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HackathonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HackathonGroupByOutputType[P]>
+            : GetScalarType<T[P], HackathonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HackathonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    orgId?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    org?: boolean | UserDefaultArgs<ExtArgs>
+    problems?: boolean | Hackathon$problemsArgs<ExtArgs>
+    participants?: boolean | Hackathon$participantsArgs<ExtArgs>
+    problemList?: boolean | Hackathon$problemListArgs<ExtArgs>
+    _count?: boolean | HackathonCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathon"]>
+
+  export type HackathonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    orgId?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    org?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathon"]>
+
+  export type HackathonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    orgId?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    org?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathon"]>
+
+  export type HackathonSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    orgId?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HackathonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "orgId" | "startTime" | "endTime" | "createdAt" | "updatedAt", ExtArgs["result"]["hackathon"]>
+  export type HackathonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    org?: boolean | UserDefaultArgs<ExtArgs>
+    problems?: boolean | Hackathon$problemsArgs<ExtArgs>
+    participants?: boolean | Hackathon$participantsArgs<ExtArgs>
+    problemList?: boolean | Hackathon$problemListArgs<ExtArgs>
+    _count?: boolean | HackathonCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type HackathonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    org?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HackathonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    org?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $HackathonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Hackathon"
+    objects: {
+      org: Prisma.$UserPayload<ExtArgs>
+      problems: Prisma.$HackathonProblemPayload<ExtArgs>[]
+      participants: Prisma.$HackathonParticipantPayload<ExtArgs>[]
+      problemList: Prisma.$ProblemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      orgId: string
+      startTime: Date
+      endTime: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["hackathon"]>
+    composites: {}
+  }
+
+  type HackathonGetPayload<S extends boolean | null | undefined | HackathonDefaultArgs> = $Result.GetResult<Prisma.$HackathonPayload, S>
+
+  type HackathonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HackathonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HackathonCountAggregateInputType | true
+    }
+
+  export interface HackathonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Hackathon'], meta: { name: 'Hackathon' } }
+    /**
+     * Find zero or one Hackathon that matches the filter.
+     * @param {HackathonFindUniqueArgs} args - Arguments to find a Hackathon
+     * @example
+     * // Get one Hackathon
+     * const hackathon = await prisma.hackathon.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HackathonFindUniqueArgs>(args: SelectSubset<T, HackathonFindUniqueArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Hackathon that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HackathonFindUniqueOrThrowArgs} args - Arguments to find a Hackathon
+     * @example
+     * // Get one Hackathon
+     * const hackathon = await prisma.hackathon.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HackathonFindUniqueOrThrowArgs>(args: SelectSubset<T, HackathonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Hackathon that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonFindFirstArgs} args - Arguments to find a Hackathon
+     * @example
+     * // Get one Hackathon
+     * const hackathon = await prisma.hackathon.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HackathonFindFirstArgs>(args?: SelectSubset<T, HackathonFindFirstArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Hackathon that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonFindFirstOrThrowArgs} args - Arguments to find a Hackathon
+     * @example
+     * // Get one Hackathon
+     * const hackathon = await prisma.hackathon.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HackathonFindFirstOrThrowArgs>(args?: SelectSubset<T, HackathonFindFirstOrThrowArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Hackathons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Hackathons
+     * const hackathons = await prisma.hackathon.findMany()
+     * 
+     * // Get first 10 Hackathons
+     * const hackathons = await prisma.hackathon.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hackathonWithIdOnly = await prisma.hackathon.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HackathonFindManyArgs>(args?: SelectSubset<T, HackathonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Hackathon.
+     * @param {HackathonCreateArgs} args - Arguments to create a Hackathon.
+     * @example
+     * // Create one Hackathon
+     * const Hackathon = await prisma.hackathon.create({
+     *   data: {
+     *     // ... data to create a Hackathon
+     *   }
+     * })
+     * 
+     */
+    create<T extends HackathonCreateArgs>(args: SelectSubset<T, HackathonCreateArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Hackathons.
+     * @param {HackathonCreateManyArgs} args - Arguments to create many Hackathons.
+     * @example
+     * // Create many Hackathons
+     * const hackathon = await prisma.hackathon.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HackathonCreateManyArgs>(args?: SelectSubset<T, HackathonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Hackathons and returns the data saved in the database.
+     * @param {HackathonCreateManyAndReturnArgs} args - Arguments to create many Hackathons.
+     * @example
+     * // Create many Hackathons
+     * const hackathon = await prisma.hackathon.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Hackathons and only return the `id`
+     * const hackathonWithIdOnly = await prisma.hackathon.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HackathonCreateManyAndReturnArgs>(args?: SelectSubset<T, HackathonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Hackathon.
+     * @param {HackathonDeleteArgs} args - Arguments to delete one Hackathon.
+     * @example
+     * // Delete one Hackathon
+     * const Hackathon = await prisma.hackathon.delete({
+     *   where: {
+     *     // ... filter to delete one Hackathon
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HackathonDeleteArgs>(args: SelectSubset<T, HackathonDeleteArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Hackathon.
+     * @param {HackathonUpdateArgs} args - Arguments to update one Hackathon.
+     * @example
+     * // Update one Hackathon
+     * const hackathon = await prisma.hackathon.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HackathonUpdateArgs>(args: SelectSubset<T, HackathonUpdateArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Hackathons.
+     * @param {HackathonDeleteManyArgs} args - Arguments to filter Hackathons to delete.
+     * @example
+     * // Delete a few Hackathons
+     * const { count } = await prisma.hackathon.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HackathonDeleteManyArgs>(args?: SelectSubset<T, HackathonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Hackathons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Hackathons
+     * const hackathon = await prisma.hackathon.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HackathonUpdateManyArgs>(args: SelectSubset<T, HackathonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Hackathons and returns the data updated in the database.
+     * @param {HackathonUpdateManyAndReturnArgs} args - Arguments to update many Hackathons.
+     * @example
+     * // Update many Hackathons
+     * const hackathon = await prisma.hackathon.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Hackathons and only return the `id`
+     * const hackathonWithIdOnly = await prisma.hackathon.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HackathonUpdateManyAndReturnArgs>(args: SelectSubset<T, HackathonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Hackathon.
+     * @param {HackathonUpsertArgs} args - Arguments to update or create a Hackathon.
+     * @example
+     * // Update or create a Hackathon
+     * const hackathon = await prisma.hackathon.upsert({
+     *   create: {
+     *     // ... data to create a Hackathon
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Hackathon we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HackathonUpsertArgs>(args: SelectSubset<T, HackathonUpsertArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Hackathons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonCountArgs} args - Arguments to filter Hackathons to count.
+     * @example
+     * // Count the number of Hackathons
+     * const count = await prisma.hackathon.count({
+     *   where: {
+     *     // ... the filter for the Hackathons we want to count
+     *   }
+     * })
+    **/
+    count<T extends HackathonCountArgs>(
+      args?: Subset<T, HackathonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HackathonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Hackathon.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HackathonAggregateArgs>(args: Subset<T, HackathonAggregateArgs>): Prisma.PrismaPromise<GetHackathonAggregateType<T>>
+
+    /**
+     * Group by Hackathon.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HackathonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HackathonGroupByArgs['orderBy'] }
+        : { orderBy?: HackathonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HackathonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHackathonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Hackathon model
+   */
+  readonly fields: HackathonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Hackathon.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HackathonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    org<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problems<T extends Hackathon$problemsArgs<ExtArgs> = {}>(args?: Subset<T, Hackathon$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    participants<T extends Hackathon$participantsArgs<ExtArgs> = {}>(args?: Subset<T, Hackathon$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    problemList<T extends Hackathon$problemListArgs<ExtArgs> = {}>(args?: Subset<T, Hackathon$problemListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Hackathon model
+   */
+  interface HackathonFieldRefs {
+    readonly id: FieldRef<"Hackathon", 'String'>
+    readonly name: FieldRef<"Hackathon", 'String'>
+    readonly description: FieldRef<"Hackathon", 'String'>
+    readonly orgId: FieldRef<"Hackathon", 'String'>
+    readonly startTime: FieldRef<"Hackathon", 'DateTime'>
+    readonly endTime: FieldRef<"Hackathon", 'DateTime'>
+    readonly createdAt: FieldRef<"Hackathon", 'DateTime'>
+    readonly updatedAt: FieldRef<"Hackathon", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Hackathon findUnique
+   */
+  export type HackathonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter, which Hackathon to fetch.
+     */
+    where: HackathonWhereUniqueInput
+  }
+
+  /**
+   * Hackathon findUniqueOrThrow
+   */
+  export type HackathonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter, which Hackathon to fetch.
+     */
+    where: HackathonWhereUniqueInput
+  }
+
+  /**
+   * Hackathon findFirst
+   */
+  export type HackathonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter, which Hackathon to fetch.
+     */
+    where?: HackathonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hackathons to fetch.
+     */
+    orderBy?: HackathonOrderByWithRelationInput | HackathonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Hackathons.
+     */
+    cursor?: HackathonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hackathons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hackathons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Hackathons.
+     */
+    distinct?: HackathonScalarFieldEnum | HackathonScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon findFirstOrThrow
+   */
+  export type HackathonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter, which Hackathon to fetch.
+     */
+    where?: HackathonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hackathons to fetch.
+     */
+    orderBy?: HackathonOrderByWithRelationInput | HackathonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Hackathons.
+     */
+    cursor?: HackathonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hackathons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hackathons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Hackathons.
+     */
+    distinct?: HackathonScalarFieldEnum | HackathonScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon findMany
+   */
+  export type HackathonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter, which Hackathons to fetch.
+     */
+    where?: HackathonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hackathons to fetch.
+     */
+    orderBy?: HackathonOrderByWithRelationInput | HackathonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Hackathons.
+     */
+    cursor?: HackathonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hackathons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hackathons.
+     */
+    skip?: number
+    distinct?: HackathonScalarFieldEnum | HackathonScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon create
+   */
+  export type HackathonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Hackathon.
+     */
+    data: XOR<HackathonCreateInput, HackathonUncheckedCreateInput>
+  }
+
+  /**
+   * Hackathon createMany
+   */
+  export type HackathonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Hackathons.
+     */
+    data: HackathonCreateManyInput | HackathonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Hackathon createManyAndReturn
+   */
+  export type HackathonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * The data used to create many Hackathons.
+     */
+    data: HackathonCreateManyInput | HackathonCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Hackathon update
+   */
+  export type HackathonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Hackathon.
+     */
+    data: XOR<HackathonUpdateInput, HackathonUncheckedUpdateInput>
+    /**
+     * Choose, which Hackathon to update.
+     */
+    where: HackathonWhereUniqueInput
+  }
+
+  /**
+   * Hackathon updateMany
+   */
+  export type HackathonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Hackathons.
+     */
+    data: XOR<HackathonUpdateManyMutationInput, HackathonUncheckedUpdateManyInput>
+    /**
+     * Filter which Hackathons to update
+     */
+    where?: HackathonWhereInput
+    /**
+     * Limit how many Hackathons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Hackathon updateManyAndReturn
+   */
+  export type HackathonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * The data used to update Hackathons.
+     */
+    data: XOR<HackathonUpdateManyMutationInput, HackathonUncheckedUpdateManyInput>
+    /**
+     * Filter which Hackathons to update
+     */
+    where?: HackathonWhereInput
+    /**
+     * Limit how many Hackathons to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Hackathon upsert
+   */
+  export type HackathonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Hackathon to update in case it exists.
+     */
+    where: HackathonWhereUniqueInput
+    /**
+     * In case the Hackathon found by the `where` argument doesn't exist, create a new Hackathon with this data.
+     */
+    create: XOR<HackathonCreateInput, HackathonUncheckedCreateInput>
+    /**
+     * In case the Hackathon was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HackathonUpdateInput, HackathonUncheckedUpdateInput>
+  }
+
+  /**
+   * Hackathon delete
+   */
+  export type HackathonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+    /**
+     * Filter which Hackathon to delete.
+     */
+    where: HackathonWhereUniqueInput
+  }
+
+  /**
+   * Hackathon deleteMany
+   */
+  export type HackathonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Hackathons to delete
+     */
+    where?: HackathonWhereInput
+    /**
+     * Limit how many Hackathons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Hackathon.problems
+   */
+  export type Hackathon$problemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    where?: HackathonProblemWhereInput
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    cursor?: HackathonProblemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HackathonProblemScalarFieldEnum | HackathonProblemScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon.participants
+   */
+  export type Hackathon$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    where?: HackathonParticipantWhereInput
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    cursor?: HackathonParticipantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HackathonParticipantScalarFieldEnum | HackathonParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon.problemList
+   */
+  export type Hackathon$problemListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Problem
+     */
+    select?: ProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Problem
+     */
+    omit?: ProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInclude<ExtArgs> | null
+    where?: ProblemWhereInput
+    orderBy?: ProblemOrderByWithRelationInput | ProblemOrderByWithRelationInput[]
+    cursor?: ProblemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemScalarFieldEnum | ProblemScalarFieldEnum[]
+  }
+
+  /**
+   * Hackathon without action
+   */
+  export type HackathonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hackathon
+     */
+    select?: HackathonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hackathon
+     */
+    omit?: HackathonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HackathonProblem
+   */
+
+  export type AggregateHackathonProblem = {
+    _count: HackathonProblemCountAggregateOutputType | null
+    _min: HackathonProblemMinAggregateOutputType | null
+    _max: HackathonProblemMaxAggregateOutputType | null
+  }
+
+  export type HackathonProblemMinAggregateOutputType = {
+    id: string | null
+    problemId: string | null
+    hackathonId: string | null
+  }
+
+  export type HackathonProblemMaxAggregateOutputType = {
+    id: string | null
+    problemId: string | null
+    hackathonId: string | null
+  }
+
+  export type HackathonProblemCountAggregateOutputType = {
+    id: number
+    problemId: number
+    hackathonId: number
+    _all: number
+  }
+
+
+  export type HackathonProblemMinAggregateInputType = {
+    id?: true
+    problemId?: true
+    hackathonId?: true
+  }
+
+  export type HackathonProblemMaxAggregateInputType = {
+    id?: true
+    problemId?: true
+    hackathonId?: true
+  }
+
+  export type HackathonProblemCountAggregateInputType = {
+    id?: true
+    problemId?: true
+    hackathonId?: true
+    _all?: true
+  }
+
+  export type HackathonProblemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HackathonProblem to aggregate.
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonProblems to fetch.
+     */
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HackathonProblemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonProblems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonProblems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HackathonProblems
+    **/
+    _count?: true | HackathonProblemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HackathonProblemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HackathonProblemMaxAggregateInputType
+  }
+
+  export type GetHackathonProblemAggregateType<T extends HackathonProblemAggregateArgs> = {
+        [P in keyof T & keyof AggregateHackathonProblem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHackathonProblem[P]>
+      : GetScalarType<T[P], AggregateHackathonProblem[P]>
+  }
+
+
+
+
+  export type HackathonProblemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonProblemWhereInput
+    orderBy?: HackathonProblemOrderByWithAggregationInput | HackathonProblemOrderByWithAggregationInput[]
+    by: HackathonProblemScalarFieldEnum[] | HackathonProblemScalarFieldEnum
+    having?: HackathonProblemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HackathonProblemCountAggregateInputType | true
+    _min?: HackathonProblemMinAggregateInputType
+    _max?: HackathonProblemMaxAggregateInputType
+  }
+
+  export type HackathonProblemGroupByOutputType = {
+    id: string
+    problemId: string
+    hackathonId: string
+    _count: HackathonProblemCountAggregateOutputType | null
+    _min: HackathonProblemMinAggregateOutputType | null
+    _max: HackathonProblemMaxAggregateOutputType | null
+  }
+
+  type GetHackathonProblemGroupByPayload<T extends HackathonProblemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HackathonProblemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HackathonProblemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HackathonProblemGroupByOutputType[P]>
+            : GetScalarType<T[P], HackathonProblemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HackathonProblemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    problemId?: boolean
+    hackathonId?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonProblem"]>
+
+  export type HackathonProblemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    problemId?: boolean
+    hackathonId?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonProblem"]>
+
+  export type HackathonProblemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    problemId?: boolean
+    hackathonId?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonProblem"]>
+
+  export type HackathonProblemSelectScalar = {
+    id?: boolean
+    problemId?: boolean
+    hackathonId?: boolean
+  }
+
+  export type HackathonProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "problemId" | "hackathonId", ExtArgs["result"]["hackathonProblem"]>
+  export type HackathonProblemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type HackathonProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type HackathonProblemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+
+  export type $HackathonProblemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HackathonProblem"
+    objects: {
+      hackathon: Prisma.$HackathonPayload<ExtArgs>
+      problem: Prisma.$ProblemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      problemId: string
+      hackathonId: string
+    }, ExtArgs["result"]["hackathonProblem"]>
+    composites: {}
+  }
+
+  type HackathonProblemGetPayload<S extends boolean | null | undefined | HackathonProblemDefaultArgs> = $Result.GetResult<Prisma.$HackathonProblemPayload, S>
+
+  type HackathonProblemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HackathonProblemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HackathonProblemCountAggregateInputType | true
+    }
+
+  export interface HackathonProblemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HackathonProblem'], meta: { name: 'HackathonProblem' } }
+    /**
+     * Find zero or one HackathonProblem that matches the filter.
+     * @param {HackathonProblemFindUniqueArgs} args - Arguments to find a HackathonProblem
+     * @example
+     * // Get one HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HackathonProblemFindUniqueArgs>(args: SelectSubset<T, HackathonProblemFindUniqueArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HackathonProblem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HackathonProblemFindUniqueOrThrowArgs} args - Arguments to find a HackathonProblem
+     * @example
+     * // Get one HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HackathonProblemFindUniqueOrThrowArgs>(args: SelectSubset<T, HackathonProblemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HackathonProblem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemFindFirstArgs} args - Arguments to find a HackathonProblem
+     * @example
+     * // Get one HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HackathonProblemFindFirstArgs>(args?: SelectSubset<T, HackathonProblemFindFirstArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HackathonProblem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemFindFirstOrThrowArgs} args - Arguments to find a HackathonProblem
+     * @example
+     * // Get one HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HackathonProblemFindFirstOrThrowArgs>(args?: SelectSubset<T, HackathonProblemFindFirstOrThrowArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HackathonProblems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HackathonProblems
+     * const hackathonProblems = await prisma.hackathonProblem.findMany()
+     * 
+     * // Get first 10 HackathonProblems
+     * const hackathonProblems = await prisma.hackathonProblem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hackathonProblemWithIdOnly = await prisma.hackathonProblem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HackathonProblemFindManyArgs>(args?: SelectSubset<T, HackathonProblemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HackathonProblem.
+     * @param {HackathonProblemCreateArgs} args - Arguments to create a HackathonProblem.
+     * @example
+     * // Create one HackathonProblem
+     * const HackathonProblem = await prisma.hackathonProblem.create({
+     *   data: {
+     *     // ... data to create a HackathonProblem
+     *   }
+     * })
+     * 
+     */
+    create<T extends HackathonProblemCreateArgs>(args: SelectSubset<T, HackathonProblemCreateArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HackathonProblems.
+     * @param {HackathonProblemCreateManyArgs} args - Arguments to create many HackathonProblems.
+     * @example
+     * // Create many HackathonProblems
+     * const hackathonProblem = await prisma.hackathonProblem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HackathonProblemCreateManyArgs>(args?: SelectSubset<T, HackathonProblemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HackathonProblems and returns the data saved in the database.
+     * @param {HackathonProblemCreateManyAndReturnArgs} args - Arguments to create many HackathonProblems.
+     * @example
+     * // Create many HackathonProblems
+     * const hackathonProblem = await prisma.hackathonProblem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HackathonProblems and only return the `id`
+     * const hackathonProblemWithIdOnly = await prisma.hackathonProblem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HackathonProblemCreateManyAndReturnArgs>(args?: SelectSubset<T, HackathonProblemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HackathonProblem.
+     * @param {HackathonProblemDeleteArgs} args - Arguments to delete one HackathonProblem.
+     * @example
+     * // Delete one HackathonProblem
+     * const HackathonProblem = await prisma.hackathonProblem.delete({
+     *   where: {
+     *     // ... filter to delete one HackathonProblem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HackathonProblemDeleteArgs>(args: SelectSubset<T, HackathonProblemDeleteArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HackathonProblem.
+     * @param {HackathonProblemUpdateArgs} args - Arguments to update one HackathonProblem.
+     * @example
+     * // Update one HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HackathonProblemUpdateArgs>(args: SelectSubset<T, HackathonProblemUpdateArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HackathonProblems.
+     * @param {HackathonProblemDeleteManyArgs} args - Arguments to filter HackathonProblems to delete.
+     * @example
+     * // Delete a few HackathonProblems
+     * const { count } = await prisma.hackathonProblem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HackathonProblemDeleteManyArgs>(args?: SelectSubset<T, HackathonProblemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HackathonProblems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HackathonProblems
+     * const hackathonProblem = await prisma.hackathonProblem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HackathonProblemUpdateManyArgs>(args: SelectSubset<T, HackathonProblemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HackathonProblems and returns the data updated in the database.
+     * @param {HackathonProblemUpdateManyAndReturnArgs} args - Arguments to update many HackathonProblems.
+     * @example
+     * // Update many HackathonProblems
+     * const hackathonProblem = await prisma.hackathonProblem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HackathonProblems and only return the `id`
+     * const hackathonProblemWithIdOnly = await prisma.hackathonProblem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HackathonProblemUpdateManyAndReturnArgs>(args: SelectSubset<T, HackathonProblemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HackathonProblem.
+     * @param {HackathonProblemUpsertArgs} args - Arguments to update or create a HackathonProblem.
+     * @example
+     * // Update or create a HackathonProblem
+     * const hackathonProblem = await prisma.hackathonProblem.upsert({
+     *   create: {
+     *     // ... data to create a HackathonProblem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HackathonProblem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HackathonProblemUpsertArgs>(args: SelectSubset<T, HackathonProblemUpsertArgs<ExtArgs>>): Prisma__HackathonProblemClient<$Result.GetResult<Prisma.$HackathonProblemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HackathonProblems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemCountArgs} args - Arguments to filter HackathonProblems to count.
+     * @example
+     * // Count the number of HackathonProblems
+     * const count = await prisma.hackathonProblem.count({
+     *   where: {
+     *     // ... the filter for the HackathonProblems we want to count
+     *   }
+     * })
+    **/
+    count<T extends HackathonProblemCountArgs>(
+      args?: Subset<T, HackathonProblemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HackathonProblemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HackathonProblem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HackathonProblemAggregateArgs>(args: Subset<T, HackathonProblemAggregateArgs>): Prisma.PrismaPromise<GetHackathonProblemAggregateType<T>>
+
+    /**
+     * Group by HackathonProblem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonProblemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HackathonProblemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HackathonProblemGroupByArgs['orderBy'] }
+        : { orderBy?: HackathonProblemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HackathonProblemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHackathonProblemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HackathonProblem model
+   */
+  readonly fields: HackathonProblemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HackathonProblem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HackathonProblemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    hackathon<T extends HackathonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HackathonDefaultArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HackathonProblem model
+   */
+  interface HackathonProblemFieldRefs {
+    readonly id: FieldRef<"HackathonProblem", 'String'>
+    readonly problemId: FieldRef<"HackathonProblem", 'String'>
+    readonly hackathonId: FieldRef<"HackathonProblem", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HackathonProblem findUnique
+   */
+  export type HackathonProblemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonProblem to fetch.
+     */
+    where: HackathonProblemWhereUniqueInput
+  }
+
+  /**
+   * HackathonProblem findUniqueOrThrow
+   */
+  export type HackathonProblemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonProblem to fetch.
+     */
+    where: HackathonProblemWhereUniqueInput
+  }
+
+  /**
+   * HackathonProblem findFirst
+   */
+  export type HackathonProblemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonProblem to fetch.
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonProblems to fetch.
+     */
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HackathonProblems.
+     */
+    cursor?: HackathonProblemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonProblems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonProblems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HackathonProblems.
+     */
+    distinct?: HackathonProblemScalarFieldEnum | HackathonProblemScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonProblem findFirstOrThrow
+   */
+  export type HackathonProblemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonProblem to fetch.
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonProblems to fetch.
+     */
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HackathonProblems.
+     */
+    cursor?: HackathonProblemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonProblems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonProblems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HackathonProblems.
+     */
+    distinct?: HackathonProblemScalarFieldEnum | HackathonProblemScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonProblem findMany
+   */
+  export type HackathonProblemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonProblems to fetch.
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonProblems to fetch.
+     */
+    orderBy?: HackathonProblemOrderByWithRelationInput | HackathonProblemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HackathonProblems.
+     */
+    cursor?: HackathonProblemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonProblems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonProblems.
+     */
+    skip?: number
+    distinct?: HackathonProblemScalarFieldEnum | HackathonProblemScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonProblem create
+   */
+  export type HackathonProblemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HackathonProblem.
+     */
+    data: XOR<HackathonProblemCreateInput, HackathonProblemUncheckedCreateInput>
+  }
+
+  /**
+   * HackathonProblem createMany
+   */
+  export type HackathonProblemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HackathonProblems.
+     */
+    data: HackathonProblemCreateManyInput | HackathonProblemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HackathonProblem createManyAndReturn
+   */
+  export type HackathonProblemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * The data used to create many HackathonProblems.
+     */
+    data: HackathonProblemCreateManyInput | HackathonProblemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HackathonProblem update
+   */
+  export type HackathonProblemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HackathonProblem.
+     */
+    data: XOR<HackathonProblemUpdateInput, HackathonProblemUncheckedUpdateInput>
+    /**
+     * Choose, which HackathonProblem to update.
+     */
+    where: HackathonProblemWhereUniqueInput
+  }
+
+  /**
+   * HackathonProblem updateMany
+   */
+  export type HackathonProblemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HackathonProblems.
+     */
+    data: XOR<HackathonProblemUpdateManyMutationInput, HackathonProblemUncheckedUpdateManyInput>
+    /**
+     * Filter which HackathonProblems to update
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * Limit how many HackathonProblems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HackathonProblem updateManyAndReturn
+   */
+  export type HackathonProblemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * The data used to update HackathonProblems.
+     */
+    data: XOR<HackathonProblemUpdateManyMutationInput, HackathonProblemUncheckedUpdateManyInput>
+    /**
+     * Filter which HackathonProblems to update
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * Limit how many HackathonProblems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HackathonProblem upsert
+   */
+  export type HackathonProblemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HackathonProblem to update in case it exists.
+     */
+    where: HackathonProblemWhereUniqueInput
+    /**
+     * In case the HackathonProblem found by the `where` argument doesn't exist, create a new HackathonProblem with this data.
+     */
+    create: XOR<HackathonProblemCreateInput, HackathonProblemUncheckedCreateInput>
+    /**
+     * In case the HackathonProblem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HackathonProblemUpdateInput, HackathonProblemUncheckedUpdateInput>
+  }
+
+  /**
+   * HackathonProblem delete
+   */
+  export type HackathonProblemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+    /**
+     * Filter which HackathonProblem to delete.
+     */
+    where: HackathonProblemWhereUniqueInput
+  }
+
+  /**
+   * HackathonProblem deleteMany
+   */
+  export type HackathonProblemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HackathonProblems to delete
+     */
+    where?: HackathonProblemWhereInput
+    /**
+     * Limit how many HackathonProblems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HackathonProblem without action
+   */
+  export type HackathonProblemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonProblem
+     */
+    select?: HackathonProblemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonProblem
+     */
+    omit?: HackathonProblemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonProblemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HackathonParticipant
+   */
+
+  export type AggregateHackathonParticipant = {
+    _count: HackathonParticipantCountAggregateOutputType | null
+    _avg: HackathonParticipantAvgAggregateOutputType | null
+    _sum: HackathonParticipantSumAggregateOutputType | null
+    _min: HackathonParticipantMinAggregateOutputType | null
+    _max: HackathonParticipantMaxAggregateOutputType | null
+  }
+
+  export type HackathonParticipantAvgAggregateOutputType = {
+    score: number | null
+  }
+
+  export type HackathonParticipantSumAggregateOutputType = {
+    score: number | null
+  }
+
+  export type HackathonParticipantMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    hackathonId: string | null
+    score: number | null
+    joinedAt: Date | null
+  }
+
+  export type HackathonParticipantMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    hackathonId: string | null
+    score: number | null
+    joinedAt: Date | null
+  }
+
+  export type HackathonParticipantCountAggregateOutputType = {
+    id: number
+    userId: number
+    hackathonId: number
+    score: number
+    joinedAt: number
+    _all: number
+  }
+
+
+  export type HackathonParticipantAvgAggregateInputType = {
+    score?: true
+  }
+
+  export type HackathonParticipantSumAggregateInputType = {
+    score?: true
+  }
+
+  export type HackathonParticipantMinAggregateInputType = {
+    id?: true
+    userId?: true
+    hackathonId?: true
+    score?: true
+    joinedAt?: true
+  }
+
+  export type HackathonParticipantMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    hackathonId?: true
+    score?: true
+    joinedAt?: true
+  }
+
+  export type HackathonParticipantCountAggregateInputType = {
+    id?: true
+    userId?: true
+    hackathonId?: true
+    score?: true
+    joinedAt?: true
+    _all?: true
+  }
+
+  export type HackathonParticipantAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HackathonParticipant to aggregate.
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonParticipants to fetch.
+     */
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HackathonParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonParticipants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonParticipants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HackathonParticipants
+    **/
+    _count?: true | HackathonParticipantCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HackathonParticipantAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HackathonParticipantSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HackathonParticipantMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HackathonParticipantMaxAggregateInputType
+  }
+
+  export type GetHackathonParticipantAggregateType<T extends HackathonParticipantAggregateArgs> = {
+        [P in keyof T & keyof AggregateHackathonParticipant]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHackathonParticipant[P]>
+      : GetScalarType<T[P], AggregateHackathonParticipant[P]>
+  }
+
+
+
+
+  export type HackathonParticipantGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HackathonParticipantWhereInput
+    orderBy?: HackathonParticipantOrderByWithAggregationInput | HackathonParticipantOrderByWithAggregationInput[]
+    by: HackathonParticipantScalarFieldEnum[] | HackathonParticipantScalarFieldEnum
+    having?: HackathonParticipantScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HackathonParticipantCountAggregateInputType | true
+    _avg?: HackathonParticipantAvgAggregateInputType
+    _sum?: HackathonParticipantSumAggregateInputType
+    _min?: HackathonParticipantMinAggregateInputType
+    _max?: HackathonParticipantMaxAggregateInputType
+  }
+
+  export type HackathonParticipantGroupByOutputType = {
+    id: string
+    userId: string
+    hackathonId: string
+    score: number
+    joinedAt: Date
+    _count: HackathonParticipantCountAggregateOutputType | null
+    _avg: HackathonParticipantAvgAggregateOutputType | null
+    _sum: HackathonParticipantSumAggregateOutputType | null
+    _min: HackathonParticipantMinAggregateOutputType | null
+    _max: HackathonParticipantMaxAggregateOutputType | null
+  }
+
+  type GetHackathonParticipantGroupByPayload<T extends HackathonParticipantGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HackathonParticipantGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HackathonParticipantGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HackathonParticipantGroupByOutputType[P]>
+            : GetScalarType<T[P], HackathonParticipantGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HackathonParticipantSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hackathonId?: boolean
+    score?: boolean
+    joinedAt?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonParticipant"]>
+
+  export type HackathonParticipantSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hackathonId?: boolean
+    score?: boolean
+    joinedAt?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonParticipant"]>
+
+  export type HackathonParticipantSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hackathonId?: boolean
+    score?: boolean
+    joinedAt?: boolean
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hackathonParticipant"]>
+
+  export type HackathonParticipantSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    hackathonId?: boolean
+    score?: boolean
+    joinedAt?: boolean
+  }
+
+  export type HackathonParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "hackathonId" | "score" | "joinedAt", ExtArgs["result"]["hackathonParticipant"]>
+  export type HackathonParticipantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HackathonParticipantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HackathonParticipantIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hackathon?: boolean | HackathonDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $HackathonParticipantPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HackathonParticipant"
+    objects: {
+      hackathon: Prisma.$HackathonPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      hackathonId: string
+      score: number
+      joinedAt: Date
+    }, ExtArgs["result"]["hackathonParticipant"]>
+    composites: {}
+  }
+
+  type HackathonParticipantGetPayload<S extends boolean | null | undefined | HackathonParticipantDefaultArgs> = $Result.GetResult<Prisma.$HackathonParticipantPayload, S>
+
+  type HackathonParticipantCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HackathonParticipantFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HackathonParticipantCountAggregateInputType | true
+    }
+
+  export interface HackathonParticipantDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HackathonParticipant'], meta: { name: 'HackathonParticipant' } }
+    /**
+     * Find zero or one HackathonParticipant that matches the filter.
+     * @param {HackathonParticipantFindUniqueArgs} args - Arguments to find a HackathonParticipant
+     * @example
+     * // Get one HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HackathonParticipantFindUniqueArgs>(args: SelectSubset<T, HackathonParticipantFindUniqueArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HackathonParticipant that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HackathonParticipantFindUniqueOrThrowArgs} args - Arguments to find a HackathonParticipant
+     * @example
+     * // Get one HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HackathonParticipantFindUniqueOrThrowArgs>(args: SelectSubset<T, HackathonParticipantFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HackathonParticipant that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantFindFirstArgs} args - Arguments to find a HackathonParticipant
+     * @example
+     * // Get one HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HackathonParticipantFindFirstArgs>(args?: SelectSubset<T, HackathonParticipantFindFirstArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HackathonParticipant that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantFindFirstOrThrowArgs} args - Arguments to find a HackathonParticipant
+     * @example
+     * // Get one HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HackathonParticipantFindFirstOrThrowArgs>(args?: SelectSubset<T, HackathonParticipantFindFirstOrThrowArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HackathonParticipants that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HackathonParticipants
+     * const hackathonParticipants = await prisma.hackathonParticipant.findMany()
+     * 
+     * // Get first 10 HackathonParticipants
+     * const hackathonParticipants = await prisma.hackathonParticipant.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hackathonParticipantWithIdOnly = await prisma.hackathonParticipant.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HackathonParticipantFindManyArgs>(args?: SelectSubset<T, HackathonParticipantFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HackathonParticipant.
+     * @param {HackathonParticipantCreateArgs} args - Arguments to create a HackathonParticipant.
+     * @example
+     * // Create one HackathonParticipant
+     * const HackathonParticipant = await prisma.hackathonParticipant.create({
+     *   data: {
+     *     // ... data to create a HackathonParticipant
+     *   }
+     * })
+     * 
+     */
+    create<T extends HackathonParticipantCreateArgs>(args: SelectSubset<T, HackathonParticipantCreateArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HackathonParticipants.
+     * @param {HackathonParticipantCreateManyArgs} args - Arguments to create many HackathonParticipants.
+     * @example
+     * // Create many HackathonParticipants
+     * const hackathonParticipant = await prisma.hackathonParticipant.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HackathonParticipantCreateManyArgs>(args?: SelectSubset<T, HackathonParticipantCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HackathonParticipants and returns the data saved in the database.
+     * @param {HackathonParticipantCreateManyAndReturnArgs} args - Arguments to create many HackathonParticipants.
+     * @example
+     * // Create many HackathonParticipants
+     * const hackathonParticipant = await prisma.hackathonParticipant.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HackathonParticipants and only return the `id`
+     * const hackathonParticipantWithIdOnly = await prisma.hackathonParticipant.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HackathonParticipantCreateManyAndReturnArgs>(args?: SelectSubset<T, HackathonParticipantCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HackathonParticipant.
+     * @param {HackathonParticipantDeleteArgs} args - Arguments to delete one HackathonParticipant.
+     * @example
+     * // Delete one HackathonParticipant
+     * const HackathonParticipant = await prisma.hackathonParticipant.delete({
+     *   where: {
+     *     // ... filter to delete one HackathonParticipant
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HackathonParticipantDeleteArgs>(args: SelectSubset<T, HackathonParticipantDeleteArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HackathonParticipant.
+     * @param {HackathonParticipantUpdateArgs} args - Arguments to update one HackathonParticipant.
+     * @example
+     * // Update one HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HackathonParticipantUpdateArgs>(args: SelectSubset<T, HackathonParticipantUpdateArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HackathonParticipants.
+     * @param {HackathonParticipantDeleteManyArgs} args - Arguments to filter HackathonParticipants to delete.
+     * @example
+     * // Delete a few HackathonParticipants
+     * const { count } = await prisma.hackathonParticipant.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HackathonParticipantDeleteManyArgs>(args?: SelectSubset<T, HackathonParticipantDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HackathonParticipants.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HackathonParticipants
+     * const hackathonParticipant = await prisma.hackathonParticipant.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HackathonParticipantUpdateManyArgs>(args: SelectSubset<T, HackathonParticipantUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HackathonParticipants and returns the data updated in the database.
+     * @param {HackathonParticipantUpdateManyAndReturnArgs} args - Arguments to update many HackathonParticipants.
+     * @example
+     * // Update many HackathonParticipants
+     * const hackathonParticipant = await prisma.hackathonParticipant.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HackathonParticipants and only return the `id`
+     * const hackathonParticipantWithIdOnly = await prisma.hackathonParticipant.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HackathonParticipantUpdateManyAndReturnArgs>(args: SelectSubset<T, HackathonParticipantUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HackathonParticipant.
+     * @param {HackathonParticipantUpsertArgs} args - Arguments to update or create a HackathonParticipant.
+     * @example
+     * // Update or create a HackathonParticipant
+     * const hackathonParticipant = await prisma.hackathonParticipant.upsert({
+     *   create: {
+     *     // ... data to create a HackathonParticipant
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HackathonParticipant we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HackathonParticipantUpsertArgs>(args: SelectSubset<T, HackathonParticipantUpsertArgs<ExtArgs>>): Prisma__HackathonParticipantClient<$Result.GetResult<Prisma.$HackathonParticipantPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HackathonParticipants.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantCountArgs} args - Arguments to filter HackathonParticipants to count.
+     * @example
+     * // Count the number of HackathonParticipants
+     * const count = await prisma.hackathonParticipant.count({
+     *   where: {
+     *     // ... the filter for the HackathonParticipants we want to count
+     *   }
+     * })
+    **/
+    count<T extends HackathonParticipantCountArgs>(
+      args?: Subset<T, HackathonParticipantCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HackathonParticipantCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HackathonParticipant.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HackathonParticipantAggregateArgs>(args: Subset<T, HackathonParticipantAggregateArgs>): Prisma.PrismaPromise<GetHackathonParticipantAggregateType<T>>
+
+    /**
+     * Group by HackathonParticipant.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HackathonParticipantGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HackathonParticipantGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HackathonParticipantGroupByArgs['orderBy'] }
+        : { orderBy?: HackathonParticipantGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HackathonParticipantGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHackathonParticipantGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HackathonParticipant model
+   */
+  readonly fields: HackathonParticipantFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HackathonParticipant.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HackathonParticipantClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    hackathon<T extends HackathonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HackathonDefaultArgs<ExtArgs>>): Prisma__HackathonClient<$Result.GetResult<Prisma.$HackathonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HackathonParticipant model
+   */
+  interface HackathonParticipantFieldRefs {
+    readonly id: FieldRef<"HackathonParticipant", 'String'>
+    readonly userId: FieldRef<"HackathonParticipant", 'String'>
+    readonly hackathonId: FieldRef<"HackathonParticipant", 'String'>
+    readonly score: FieldRef<"HackathonParticipant", 'Int'>
+    readonly joinedAt: FieldRef<"HackathonParticipant", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HackathonParticipant findUnique
+   */
+  export type HackathonParticipantFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonParticipant to fetch.
+     */
+    where: HackathonParticipantWhereUniqueInput
+  }
+
+  /**
+   * HackathonParticipant findUniqueOrThrow
+   */
+  export type HackathonParticipantFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonParticipant to fetch.
+     */
+    where: HackathonParticipantWhereUniqueInput
+  }
+
+  /**
+   * HackathonParticipant findFirst
+   */
+  export type HackathonParticipantFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonParticipant to fetch.
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonParticipants to fetch.
+     */
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HackathonParticipants.
+     */
+    cursor?: HackathonParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonParticipants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonParticipants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HackathonParticipants.
+     */
+    distinct?: HackathonParticipantScalarFieldEnum | HackathonParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonParticipant findFirstOrThrow
+   */
+  export type HackathonParticipantFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonParticipant to fetch.
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonParticipants to fetch.
+     */
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HackathonParticipants.
+     */
+    cursor?: HackathonParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonParticipants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonParticipants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HackathonParticipants.
+     */
+    distinct?: HackathonParticipantScalarFieldEnum | HackathonParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonParticipant findMany
+   */
+  export type HackathonParticipantFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which HackathonParticipants to fetch.
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HackathonParticipants to fetch.
+     */
+    orderBy?: HackathonParticipantOrderByWithRelationInput | HackathonParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HackathonParticipants.
+     */
+    cursor?: HackathonParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HackathonParticipants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HackathonParticipants.
+     */
+    skip?: number
+    distinct?: HackathonParticipantScalarFieldEnum | HackathonParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * HackathonParticipant create
+   */
+  export type HackathonParticipantCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HackathonParticipant.
+     */
+    data: XOR<HackathonParticipantCreateInput, HackathonParticipantUncheckedCreateInput>
+  }
+
+  /**
+   * HackathonParticipant createMany
+   */
+  export type HackathonParticipantCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HackathonParticipants.
+     */
+    data: HackathonParticipantCreateManyInput | HackathonParticipantCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HackathonParticipant createManyAndReturn
+   */
+  export type HackathonParticipantCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * The data used to create many HackathonParticipants.
+     */
+    data: HackathonParticipantCreateManyInput | HackathonParticipantCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HackathonParticipant update
+   */
+  export type HackathonParticipantUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HackathonParticipant.
+     */
+    data: XOR<HackathonParticipantUpdateInput, HackathonParticipantUncheckedUpdateInput>
+    /**
+     * Choose, which HackathonParticipant to update.
+     */
+    where: HackathonParticipantWhereUniqueInput
+  }
+
+  /**
+   * HackathonParticipant updateMany
+   */
+  export type HackathonParticipantUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HackathonParticipants.
+     */
+    data: XOR<HackathonParticipantUpdateManyMutationInput, HackathonParticipantUncheckedUpdateManyInput>
+    /**
+     * Filter which HackathonParticipants to update
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * Limit how many HackathonParticipants to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HackathonParticipant updateManyAndReturn
+   */
+  export type HackathonParticipantUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * The data used to update HackathonParticipants.
+     */
+    data: XOR<HackathonParticipantUpdateManyMutationInput, HackathonParticipantUncheckedUpdateManyInput>
+    /**
+     * Filter which HackathonParticipants to update
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * Limit how many HackathonParticipants to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HackathonParticipant upsert
+   */
+  export type HackathonParticipantUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HackathonParticipant to update in case it exists.
+     */
+    where: HackathonParticipantWhereUniqueInput
+    /**
+     * In case the HackathonParticipant found by the `where` argument doesn't exist, create a new HackathonParticipant with this data.
+     */
+    create: XOR<HackathonParticipantCreateInput, HackathonParticipantUncheckedCreateInput>
+    /**
+     * In case the HackathonParticipant was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HackathonParticipantUpdateInput, HackathonParticipantUncheckedUpdateInput>
+  }
+
+  /**
+   * HackathonParticipant delete
+   */
+  export type HackathonParticipantDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+    /**
+     * Filter which HackathonParticipant to delete.
+     */
+    where: HackathonParticipantWhereUniqueInput
+  }
+
+  /**
+   * HackathonParticipant deleteMany
+   */
+  export type HackathonParticipantDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HackathonParticipants to delete
+     */
+    where?: HackathonParticipantWhereInput
+    /**
+     * Limit how many HackathonParticipants to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HackathonParticipant without action
+   */
+  export type HackathonParticipantDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HackathonParticipant
+     */
+    select?: HackathonParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HackathonParticipant
+     */
+    omit?: HackathonParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HackathonParticipantInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9719,6 +13581,11 @@ export namespace Prisma {
     image: 'image',
     role: 'role',
     password: 'password',
+    orgName: 'orgName',
+    orgSize: 'orgSize',
+    orgcountry: 'orgcountry',
+    orgWebsite: 'orgWebsite',
+    orgphone: 'orgphone',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9733,6 +13600,7 @@ export namespace Prisma {
     difficulty: 'difficulty',
     tags: 'tags',
     userId: 'userId',
+    hackathonId: 'hackathonId',
     examples: 'examples',
     constraints: 'constraints',
     hints: 'hints',
@@ -9818,6 +13686,40 @@ export namespace Prisma {
   };
 
   export type ProblemInPlaylistScalarFieldEnum = (typeof ProblemInPlaylistScalarFieldEnum)[keyof typeof ProblemInPlaylistScalarFieldEnum]
+
+
+  export const HackathonScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    orgId: 'orgId',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HackathonScalarFieldEnum = (typeof HackathonScalarFieldEnum)[keyof typeof HackathonScalarFieldEnum]
+
+
+  export const HackathonProblemScalarFieldEnum: {
+    id: 'id',
+    problemId: 'problemId',
+    hackathonId: 'hackathonId'
+  };
+
+  export type HackathonProblemScalarFieldEnum = (typeof HackathonProblemScalarFieldEnum)[keyof typeof HackathonProblemScalarFieldEnum]
+
+
+  export const HackathonParticipantScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    hackathonId: 'hackathonId',
+    score: 'score',
+    joinedAt: 'joinedAt'
+  };
+
+  export type HackathonParticipantScalarFieldEnum = (typeof HackathonParticipantScalarFieldEnum)[keyof typeof HackathonParticipantScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9983,12 +13885,19 @@ export namespace Prisma {
     image?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     password?: StringFilter<"User"> | string
+    orgName?: StringNullableFilter<"User"> | string | null
+    orgSize?: StringNullableFilter<"User"> | string | null
+    orgcountry?: StringNullableFilter<"User"> | string | null
+    orgWebsite?: StringNullableFilter<"User"> | string | null
+    orgphone?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     problems?: ProblemListRelationFilter
     submission?: SubmissionListRelationFilter
     problemSolved?: ProblemSolvedListRelationFilter
     playlist?: PlaylistListRelationFilter
+    org?: HackathonListRelationFilter
+    hackathonParticipant?: HackathonParticipantListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9998,12 +13907,19 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     role?: SortOrder
     password?: SortOrder
+    orgName?: SortOrderInput | SortOrder
+    orgSize?: SortOrderInput | SortOrder
+    orgcountry?: SortOrderInput | SortOrder
+    orgWebsite?: SortOrderInput | SortOrder
+    orgphone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     problems?: ProblemOrderByRelationAggregateInput
     submission?: SubmissionOrderByRelationAggregateInput
     problemSolved?: ProblemSolvedOrderByRelationAggregateInput
     playlist?: PlaylistOrderByRelationAggregateInput
+    org?: HackathonOrderByRelationAggregateInput
+    hackathonParticipant?: HackathonParticipantOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10016,12 +13932,19 @@ export namespace Prisma {
     image?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     password?: StringFilter<"User"> | string
+    orgName?: StringNullableFilter<"User"> | string | null
+    orgSize?: StringNullableFilter<"User"> | string | null
+    orgcountry?: StringNullableFilter<"User"> | string | null
+    orgWebsite?: StringNullableFilter<"User"> | string | null
+    orgphone?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     problems?: ProblemListRelationFilter
     submission?: SubmissionListRelationFilter
     problemSolved?: ProblemSolvedListRelationFilter
     playlist?: PlaylistListRelationFilter
+    org?: HackathonListRelationFilter
+    hackathonParticipant?: HackathonParticipantListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -10031,6 +13954,11 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     role?: SortOrder
     password?: SortOrder
+    orgName?: SortOrderInput | SortOrder
+    orgSize?: SortOrderInput | SortOrder
+    orgcountry?: SortOrderInput | SortOrder
+    orgWebsite?: SortOrderInput | SortOrder
+    orgphone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -10048,6 +13976,11 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     password?: StringWithAggregatesFilter<"User"> | string
+    orgName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    orgSize?: StringNullableWithAggregatesFilter<"User"> | string | null
+    orgcountry?: StringNullableWithAggregatesFilter<"User"> | string | null
+    orgWebsite?: StringNullableWithAggregatesFilter<"User"> | string | null
+    orgphone?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -10062,6 +13995,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Problem">
     userId?: StringFilter<"Problem"> | string
+    hackathonId?: StringNullableFilter<"Problem"> | string | null
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
     hints?: StringNullableFilter<"Problem"> | string | null
@@ -10072,9 +14006,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     updatedAt?: DateTimeFilter<"Problem"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    hackathon?: XOR<HackathonNullableScalarRelationFilter, HackathonWhereInput> | null
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
+    hackathonProblem?: HackathonProblemListRelationFilter
   }
 
   export type ProblemOrderByWithRelationInput = {
@@ -10084,6 +14020,7 @@ export namespace Prisma {
     difficulty?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
+    hackathonId?: SortOrderInput | SortOrder
     examples?: SortOrder
     constraints?: SortOrder
     hints?: SortOrderInput | SortOrder
@@ -10094,9 +14031,11 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    hackathon?: HackathonOrderByWithRelationInput
     submission?: SubmissionOrderByRelationAggregateInput
     solvedBy?: ProblemSolvedOrderByRelationAggregateInput
     problemsPlaylists?: ProblemInPlaylistOrderByRelationAggregateInput
+    hackathonProblem?: HackathonProblemOrderByRelationAggregateInput
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
@@ -10109,6 +14048,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Problem">
     userId?: StringFilter<"Problem"> | string
+    hackathonId?: StringNullableFilter<"Problem"> | string | null
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
     hints?: StringNullableFilter<"Problem"> | string | null
@@ -10119,9 +14059,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     updatedAt?: DateTimeFilter<"Problem"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    hackathon?: XOR<HackathonNullableScalarRelationFilter, HackathonWhereInput> | null
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
+    hackathonProblem?: HackathonProblemListRelationFilter
   }, "id">
 
   export type ProblemOrderByWithAggregationInput = {
@@ -10131,6 +14073,7 @@ export namespace Prisma {
     difficulty?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
+    hackathonId?: SortOrderInput | SortOrder
     examples?: SortOrder
     constraints?: SortOrder
     hints?: SortOrderInput | SortOrder
@@ -10155,6 +14098,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyWithAggregatesFilter<"Problem"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Problem">
     userId?: StringWithAggregatesFilter<"Problem"> | string
+    hackathonId?: StringNullableWithAggregatesFilter<"Problem"> | string | null
     examples?: JsonWithAggregatesFilter<"Problem">
     constraints?: StringWithAggregatesFilter<"Problem"> | string
     hints?: StringNullableWithAggregatesFilter<"Problem"> | string | null
@@ -10551,6 +14495,194 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
   }
 
+  export type HackathonWhereInput = {
+    AND?: HackathonWhereInput | HackathonWhereInput[]
+    OR?: HackathonWhereInput[]
+    NOT?: HackathonWhereInput | HackathonWhereInput[]
+    id?: StringFilter<"Hackathon"> | string
+    name?: StringFilter<"Hackathon"> | string
+    description?: StringNullableFilter<"Hackathon"> | string | null
+    orgId?: StringFilter<"Hackathon"> | string
+    startTime?: DateTimeFilter<"Hackathon"> | Date | string
+    endTime?: DateTimeFilter<"Hackathon"> | Date | string
+    createdAt?: DateTimeFilter<"Hackathon"> | Date | string
+    updatedAt?: DateTimeFilter<"Hackathon"> | Date | string
+    org?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problems?: HackathonProblemListRelationFilter
+    participants?: HackathonParticipantListRelationFilter
+    problemList?: ProblemListRelationFilter
+  }
+
+  export type HackathonOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    orgId?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    org?: UserOrderByWithRelationInput
+    problems?: HackathonProblemOrderByRelationAggregateInput
+    participants?: HackathonParticipantOrderByRelationAggregateInput
+    problemList?: ProblemOrderByRelationAggregateInput
+  }
+
+  export type HackathonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HackathonWhereInput | HackathonWhereInput[]
+    OR?: HackathonWhereInput[]
+    NOT?: HackathonWhereInput | HackathonWhereInput[]
+    name?: StringFilter<"Hackathon"> | string
+    description?: StringNullableFilter<"Hackathon"> | string | null
+    orgId?: StringFilter<"Hackathon"> | string
+    startTime?: DateTimeFilter<"Hackathon"> | Date | string
+    endTime?: DateTimeFilter<"Hackathon"> | Date | string
+    createdAt?: DateTimeFilter<"Hackathon"> | Date | string
+    updatedAt?: DateTimeFilter<"Hackathon"> | Date | string
+    org?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problems?: HackathonProblemListRelationFilter
+    participants?: HackathonParticipantListRelationFilter
+    problemList?: ProblemListRelationFilter
+  }, "id">
+
+  export type HackathonOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    orgId?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HackathonCountOrderByAggregateInput
+    _max?: HackathonMaxOrderByAggregateInput
+    _min?: HackathonMinOrderByAggregateInput
+  }
+
+  export type HackathonScalarWhereWithAggregatesInput = {
+    AND?: HackathonScalarWhereWithAggregatesInput | HackathonScalarWhereWithAggregatesInput[]
+    OR?: HackathonScalarWhereWithAggregatesInput[]
+    NOT?: HackathonScalarWhereWithAggregatesInput | HackathonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Hackathon"> | string
+    name?: StringWithAggregatesFilter<"Hackathon"> | string
+    description?: StringNullableWithAggregatesFilter<"Hackathon"> | string | null
+    orgId?: StringWithAggregatesFilter<"Hackathon"> | string
+    startTime?: DateTimeWithAggregatesFilter<"Hackathon"> | Date | string
+    endTime?: DateTimeWithAggregatesFilter<"Hackathon"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Hackathon"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Hackathon"> | Date | string
+  }
+
+  export type HackathonProblemWhereInput = {
+    AND?: HackathonProblemWhereInput | HackathonProblemWhereInput[]
+    OR?: HackathonProblemWhereInput[]
+    NOT?: HackathonProblemWhereInput | HackathonProblemWhereInput[]
+    id?: StringFilter<"HackathonProblem"> | string
+    problemId?: StringFilter<"HackathonProblem"> | string
+    hackathonId?: StringFilter<"HackathonProblem"> | string
+    hackathon?: XOR<HackathonScalarRelationFilter, HackathonWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }
+
+  export type HackathonProblemOrderByWithRelationInput = {
+    id?: SortOrder
+    problemId?: SortOrder
+    hackathonId?: SortOrder
+    hackathon?: HackathonOrderByWithRelationInput
+    problem?: ProblemOrderByWithRelationInput
+  }
+
+  export type HackathonProblemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    hackathonId_problemId?: HackathonProblemHackathonIdProblemIdCompoundUniqueInput
+    AND?: HackathonProblemWhereInput | HackathonProblemWhereInput[]
+    OR?: HackathonProblemWhereInput[]
+    NOT?: HackathonProblemWhereInput | HackathonProblemWhereInput[]
+    problemId?: StringFilter<"HackathonProblem"> | string
+    hackathonId?: StringFilter<"HackathonProblem"> | string
+    hackathon?: XOR<HackathonScalarRelationFilter, HackathonWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }, "id" | "hackathonId_problemId">
+
+  export type HackathonProblemOrderByWithAggregationInput = {
+    id?: SortOrder
+    problemId?: SortOrder
+    hackathonId?: SortOrder
+    _count?: HackathonProblemCountOrderByAggregateInput
+    _max?: HackathonProblemMaxOrderByAggregateInput
+    _min?: HackathonProblemMinOrderByAggregateInput
+  }
+
+  export type HackathonProblemScalarWhereWithAggregatesInput = {
+    AND?: HackathonProblemScalarWhereWithAggregatesInput | HackathonProblemScalarWhereWithAggregatesInput[]
+    OR?: HackathonProblemScalarWhereWithAggregatesInput[]
+    NOT?: HackathonProblemScalarWhereWithAggregatesInput | HackathonProblemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HackathonProblem"> | string
+    problemId?: StringWithAggregatesFilter<"HackathonProblem"> | string
+    hackathonId?: StringWithAggregatesFilter<"HackathonProblem"> | string
+  }
+
+  export type HackathonParticipantWhereInput = {
+    AND?: HackathonParticipantWhereInput | HackathonParticipantWhereInput[]
+    OR?: HackathonParticipantWhereInput[]
+    NOT?: HackathonParticipantWhereInput | HackathonParticipantWhereInput[]
+    id?: StringFilter<"HackathonParticipant"> | string
+    userId?: StringFilter<"HackathonParticipant"> | string
+    hackathonId?: StringFilter<"HackathonParticipant"> | string
+    score?: IntFilter<"HackathonParticipant"> | number
+    joinedAt?: DateTimeFilter<"HackathonParticipant"> | Date | string
+    hackathon?: XOR<HackathonScalarRelationFilter, HackathonWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type HackathonParticipantOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hackathonId?: SortOrder
+    score?: SortOrder
+    joinedAt?: SortOrder
+    hackathon?: HackathonOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type HackathonParticipantWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HackathonParticipantWhereInput | HackathonParticipantWhereInput[]
+    OR?: HackathonParticipantWhereInput[]
+    NOT?: HackathonParticipantWhereInput | HackathonParticipantWhereInput[]
+    userId?: StringFilter<"HackathonParticipant"> | string
+    hackathonId?: StringFilter<"HackathonParticipant"> | string
+    score?: IntFilter<"HackathonParticipant"> | number
+    joinedAt?: DateTimeFilter<"HackathonParticipant"> | Date | string
+    hackathon?: XOR<HackathonScalarRelationFilter, HackathonWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type HackathonParticipantOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hackathonId?: SortOrder
+    score?: SortOrder
+    joinedAt?: SortOrder
+    _count?: HackathonParticipantCountOrderByAggregateInput
+    _avg?: HackathonParticipantAvgOrderByAggregateInput
+    _max?: HackathonParticipantMaxOrderByAggregateInput
+    _min?: HackathonParticipantMinOrderByAggregateInput
+    _sum?: HackathonParticipantSumOrderByAggregateInput
+  }
+
+  export type HackathonParticipantScalarWhereWithAggregatesInput = {
+    AND?: HackathonParticipantScalarWhereWithAggregatesInput | HackathonParticipantScalarWhereWithAggregatesInput[]
+    OR?: HackathonParticipantScalarWhereWithAggregatesInput[]
+    NOT?: HackathonParticipantScalarWhereWithAggregatesInput | HackathonParticipantScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HackathonParticipant"> | string
+    userId?: StringWithAggregatesFilter<"HackathonParticipant"> | string
+    hackathonId?: StringWithAggregatesFilter<"HackathonParticipant"> | string
+    score?: IntWithAggregatesFilter<"HackathonParticipant"> | number
+    joinedAt?: DateTimeWithAggregatesFilter<"HackathonParticipant"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -10558,12 +14690,19 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     submission?: SubmissionCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlist?: PlaylistCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -10573,12 +14712,19 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -10588,12 +14734,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -10603,12 +14756,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -10618,6 +14778,11 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10629,6 +14794,11 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10640,6 +14810,11 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10660,9 +14835,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateInput = {
@@ -10672,6 +14849,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
     userId: string
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -10684,6 +14862,7 @@ export namespace Prisma {
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUpdateInput = {
@@ -10702,9 +14881,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateInput = {
@@ -10714,6 +14895,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10726,6 +14908,7 @@ export namespace Prisma {
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyInput = {
@@ -10735,6 +14918,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
     userId: string
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -10770,6 +14954,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11187,6 +15372,188 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HackathonCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    org: UserCreateNestedOneWithoutOrgInput
+    problems?: HackathonProblemCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    orgId: string
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: HackathonProblemUncheckedCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantUncheckedCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemUncheckedCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    org?: UserUpdateOneRequiredWithoutOrgNestedInput
+    problems?: HackathonProblemUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    orgId?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: HackathonProblemUncheckedUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUncheckedUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUncheckedUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    orgId: string
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HackathonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    orgId?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonProblemCreateInput = {
+    id?: string
+    hackathon: HackathonCreateNestedOneWithoutProblemsInput
+    problem: ProblemCreateNestedOneWithoutHackathonProblemInput
+  }
+
+  export type HackathonProblemUncheckedCreateInput = {
+    id?: string
+    problemId: string
+    hackathonId: string
+  }
+
+  export type HackathonProblemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathon?: HackathonUpdateOneRequiredWithoutProblemsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutHackathonProblemNestedInput
+  }
+
+  export type HackathonProblemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonProblemCreateManyInput = {
+    id?: string
+    problemId: string
+    hackathonId: string
+  }
+
+  export type HackathonProblemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonProblemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonParticipantCreateInput = {
+    id?: string
+    score?: number
+    joinedAt?: Date | string
+    hackathon: HackathonCreateNestedOneWithoutParticipantsInput
+    user: UserCreateNestedOneWithoutHackathonParticipantInput
+  }
+
+  export type HackathonParticipantUncheckedCreateInput = {
+    id?: string
+    userId: string
+    hackathonId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
+  export type HackathonParticipantUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hackathon?: HackathonUpdateOneRequiredWithoutParticipantsNestedInput
+    user?: UserUpdateOneRequiredWithoutHackathonParticipantNestedInput
+  }
+
+  export type HackathonParticipantUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonParticipantCreateManyInput = {
+    id?: string
+    userId: string
+    hackathonId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
+  export type HackathonParticipantUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonParticipantUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11259,6 +15626,18 @@ export namespace Prisma {
     none?: PlaylistWhereInput
   }
 
+  export type HackathonListRelationFilter = {
+    every?: HackathonWhereInput
+    some?: HackathonWhereInput
+    none?: HackathonWhereInput
+  }
+
+  export type HackathonParticipantListRelationFilter = {
+    every?: HackathonParticipantWhereInput
+    some?: HackathonParticipantWhereInput
+    none?: HackathonParticipantWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11280,6 +15659,14 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type HackathonOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HackathonParticipantOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -11287,6 +15674,11 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     password?: SortOrder
+    orgName?: SortOrder
+    orgSize?: SortOrder
+    orgcountry?: SortOrder
+    orgWebsite?: SortOrder
+    orgphone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11298,6 +15690,11 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     password?: SortOrder
+    orgName?: SortOrder
+    orgSize?: SortOrder
+    orgcountry?: SortOrder
+    orgWebsite?: SortOrder
+    orgphone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11309,6 +15706,11 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     password?: SortOrder
+    orgName?: SortOrder
+    orgSize?: SortOrder
+    orgcountry?: SortOrder
+    orgWebsite?: SortOrder
+    orgphone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11416,13 +15818,28 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type HackathonNullableScalarRelationFilter = {
+    is?: HackathonWhereInput | null
+    isNot?: HackathonWhereInput | null
+  }
+
   export type ProblemInPlaylistListRelationFilter = {
     every?: ProblemInPlaylistWhereInput
     some?: ProblemInPlaylistWhereInput
     none?: ProblemInPlaylistWhereInput
   }
 
+  export type HackathonProblemListRelationFilter = {
+    every?: HackathonProblemWhereInput
+    some?: HackathonProblemWhereInput
+    none?: HackathonProblemWhereInput
+  }
+
   export type ProblemInPlaylistOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HackathonProblemOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -11433,6 +15850,7 @@ export namespace Prisma {
     difficulty?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
+    hackathonId?: SortOrder
     examples?: SortOrder
     constraints?: SortOrder
     hints?: SortOrder
@@ -11450,6 +15868,7 @@ export namespace Prisma {
     description?: SortOrder
     difficulty?: SortOrder
     userId?: SortOrder
+    hackathonId?: SortOrder
     constraints?: SortOrder
     hints?: SortOrder
     editorial?: SortOrder
@@ -11463,6 +15882,7 @@ export namespace Prisma {
     description?: SortOrder
     difficulty?: SortOrder
     userId?: SortOrder
+    hackathonId?: SortOrder
     constraints?: SortOrder
     hints?: SortOrder
     editorial?: SortOrder
@@ -11766,6 +16186,99 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type HackathonCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    orgId?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HackathonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    orgId?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HackathonMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    orgId?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HackathonScalarRelationFilter = {
+    is?: HackathonWhereInput
+    isNot?: HackathonWhereInput
+  }
+
+  export type HackathonProblemHackathonIdProblemIdCompoundUniqueInput = {
+    hackathonId: string
+    problemId: string
+  }
+
+  export type HackathonProblemCountOrderByAggregateInput = {
+    id?: SortOrder
+    problemId?: SortOrder
+    hackathonId?: SortOrder
+  }
+
+  export type HackathonProblemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    problemId?: SortOrder
+    hackathonId?: SortOrder
+  }
+
+  export type HackathonProblemMinOrderByAggregateInput = {
+    id?: SortOrder
+    problemId?: SortOrder
+    hackathonId?: SortOrder
+  }
+
+  export type HackathonParticipantCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hackathonId?: SortOrder
+    score?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type HackathonParticipantAvgOrderByAggregateInput = {
+    score?: SortOrder
+  }
+
+  export type HackathonParticipantMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hackathonId?: SortOrder
+    score?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type HackathonParticipantMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hackathonId?: SortOrder
+    score?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type HackathonParticipantSumOrderByAggregateInput = {
+    score?: SortOrder
+  }
+
   export type ProblemCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -11794,6 +16307,20 @@ export namespace Prisma {
     connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
   }
 
+  export type HackathonCreateNestedManyWithoutOrgInput = {
+    create?: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput> | HackathonCreateWithoutOrgInput[] | HackathonUncheckedCreateWithoutOrgInput[]
+    connectOrCreate?: HackathonCreateOrConnectWithoutOrgInput | HackathonCreateOrConnectWithoutOrgInput[]
+    createMany?: HackathonCreateManyOrgInputEnvelope
+    connect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+  }
+
+  export type HackathonParticipantCreateNestedManyWithoutUserInput = {
+    create?: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput> | HackathonParticipantCreateWithoutUserInput[] | HackathonParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutUserInput | HackathonParticipantCreateOrConnectWithoutUserInput[]
+    createMany?: HackathonParticipantCreateManyUserInputEnvelope
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+  }
+
   export type ProblemUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -11820,6 +16347,20 @@ export namespace Prisma {
     connectOrCreate?: PlaylistCreateOrConnectWithoutUserInput | PlaylistCreateOrConnectWithoutUserInput[]
     createMany?: PlaylistCreateManyUserInputEnvelope
     connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
+  }
+
+  export type HackathonUncheckedCreateNestedManyWithoutOrgInput = {
+    create?: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput> | HackathonCreateWithoutOrgInput[] | HackathonUncheckedCreateWithoutOrgInput[]
+    connectOrCreate?: HackathonCreateOrConnectWithoutOrgInput | HackathonCreateOrConnectWithoutOrgInput[]
+    createMany?: HackathonCreateManyOrgInputEnvelope
+    connect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+  }
+
+  export type HackathonParticipantUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput> | HackathonParticipantCreateWithoutUserInput[] | HackathonParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutUserInput | HackathonParticipantCreateOrConnectWithoutUserInput[]
+    createMany?: HackathonParticipantCreateManyUserInputEnvelope
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -11894,6 +16435,34 @@ export namespace Prisma {
     deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
   }
 
+  export type HackathonUpdateManyWithoutOrgNestedInput = {
+    create?: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput> | HackathonCreateWithoutOrgInput[] | HackathonUncheckedCreateWithoutOrgInput[]
+    connectOrCreate?: HackathonCreateOrConnectWithoutOrgInput | HackathonCreateOrConnectWithoutOrgInput[]
+    upsert?: HackathonUpsertWithWhereUniqueWithoutOrgInput | HackathonUpsertWithWhereUniqueWithoutOrgInput[]
+    createMany?: HackathonCreateManyOrgInputEnvelope
+    set?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    disconnect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    delete?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    connect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    update?: HackathonUpdateWithWhereUniqueWithoutOrgInput | HackathonUpdateWithWhereUniqueWithoutOrgInput[]
+    updateMany?: HackathonUpdateManyWithWhereWithoutOrgInput | HackathonUpdateManyWithWhereWithoutOrgInput[]
+    deleteMany?: HackathonScalarWhereInput | HackathonScalarWhereInput[]
+  }
+
+  export type HackathonParticipantUpdateManyWithoutUserNestedInput = {
+    create?: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput> | HackathonParticipantCreateWithoutUserInput[] | HackathonParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutUserInput | HackathonParticipantCreateOrConnectWithoutUserInput[]
+    upsert?: HackathonParticipantUpsertWithWhereUniqueWithoutUserInput | HackathonParticipantUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: HackathonParticipantCreateManyUserInputEnvelope
+    set?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    disconnect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    delete?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    update?: HackathonParticipantUpdateWithWhereUniqueWithoutUserInput | HackathonParticipantUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: HackathonParticipantUpdateManyWithWhereWithoutUserInput | HackathonParticipantUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+  }
+
   export type ProblemUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -11950,6 +16519,34 @@ export namespace Prisma {
     deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
   }
 
+  export type HackathonUncheckedUpdateManyWithoutOrgNestedInput = {
+    create?: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput> | HackathonCreateWithoutOrgInput[] | HackathonUncheckedCreateWithoutOrgInput[]
+    connectOrCreate?: HackathonCreateOrConnectWithoutOrgInput | HackathonCreateOrConnectWithoutOrgInput[]
+    upsert?: HackathonUpsertWithWhereUniqueWithoutOrgInput | HackathonUpsertWithWhereUniqueWithoutOrgInput[]
+    createMany?: HackathonCreateManyOrgInputEnvelope
+    set?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    disconnect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    delete?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    connect?: HackathonWhereUniqueInput | HackathonWhereUniqueInput[]
+    update?: HackathonUpdateWithWhereUniqueWithoutOrgInput | HackathonUpdateWithWhereUniqueWithoutOrgInput[]
+    updateMany?: HackathonUpdateManyWithWhereWithoutOrgInput | HackathonUpdateManyWithWhereWithoutOrgInput[]
+    deleteMany?: HackathonScalarWhereInput | HackathonScalarWhereInput[]
+  }
+
+  export type HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput> | HackathonParticipantCreateWithoutUserInput[] | HackathonParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutUserInput | HackathonParticipantCreateOrConnectWithoutUserInput[]
+    upsert?: HackathonParticipantUpsertWithWhereUniqueWithoutUserInput | HackathonParticipantUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: HackathonParticipantCreateManyUserInputEnvelope
+    set?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    disconnect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    delete?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    update?: HackathonParticipantUpdateWithWhereUniqueWithoutUserInput | HackathonParticipantUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: HackathonParticipantUpdateManyWithWhereWithoutUserInput | HackathonParticipantUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+  }
+
   export type ProblemCreatetagsInput = {
     set: string[]
   }
@@ -11958,6 +16555,12 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProblemsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type HackathonCreateNestedOneWithoutProblemListInput = {
+    create?: XOR<HackathonCreateWithoutProblemListInput, HackathonUncheckedCreateWithoutProblemListInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutProblemListInput
+    connect?: HackathonWhereUniqueInput
   }
 
   export type SubmissionCreateNestedManyWithoutProblemInput = {
@@ -11981,6 +16584,13 @@ export namespace Prisma {
     connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
+  export type HackathonProblemCreateNestedManyWithoutProblemInput = {
+    create?: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput> | HackathonProblemCreateWithoutProblemInput[] | HackathonProblemUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutProblemInput | HackathonProblemCreateOrConnectWithoutProblemInput[]
+    createMany?: HackathonProblemCreateManyProblemInputEnvelope
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+  }
+
   export type SubmissionUncheckedCreateNestedManyWithoutProblemInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -12002,6 +16612,13 @@ export namespace Prisma {
     connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
+  export type HackathonProblemUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput> | HackathonProblemCreateWithoutProblemInput[] | HackathonProblemUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutProblemInput | HackathonProblemCreateOrConnectWithoutProblemInput[]
+    createMany?: HackathonProblemCreateManyProblemInputEnvelope
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+  }
+
   export type EnumDifficultyFieldUpdateOperationsInput = {
     set?: $Enums.Difficulty
   }
@@ -12017,6 +16634,16 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutProblemsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProblemsInput, UserUpdateWithoutProblemsInput>, UserUncheckedUpdateWithoutProblemsInput>
+  }
+
+  export type HackathonUpdateOneWithoutProblemListNestedInput = {
+    create?: XOR<HackathonCreateWithoutProblemListInput, HackathonUncheckedCreateWithoutProblemListInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutProblemListInput
+    upsert?: HackathonUpsertWithoutProblemListInput
+    disconnect?: HackathonWhereInput | boolean
+    delete?: HackathonWhereInput | boolean
+    connect?: HackathonWhereUniqueInput
+    update?: XOR<XOR<HackathonUpdateToOneWithWhereWithoutProblemListInput, HackathonUpdateWithoutProblemListInput>, HackathonUncheckedUpdateWithoutProblemListInput>
   }
 
   export type SubmissionUpdateManyWithoutProblemNestedInput = {
@@ -12061,6 +16688,20 @@ export namespace Prisma {
     deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
+  export type HackathonProblemUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput> | HackathonProblemCreateWithoutProblemInput[] | HackathonProblemUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutProblemInput | HackathonProblemCreateOrConnectWithoutProblemInput[]
+    upsert?: HackathonProblemUpsertWithWhereUniqueWithoutProblemInput | HackathonProblemUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: HackathonProblemCreateManyProblemInputEnvelope
+    set?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    disconnect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    delete?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    update?: HackathonProblemUpdateWithWhereUniqueWithoutProblemInput | HackathonProblemUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: HackathonProblemUpdateManyWithWhereWithoutProblemInput | HackathonProblemUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
+  }
+
   export type SubmissionUncheckedUpdateManyWithoutProblemNestedInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -12101,6 +16742,20 @@ export namespace Prisma {
     update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
     updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput[]
     deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
+  }
+
+  export type HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput> | HackathonProblemCreateWithoutProblemInput[] | HackathonProblemUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutProblemInput | HackathonProblemCreateOrConnectWithoutProblemInput[]
+    upsert?: HackathonProblemUpsertWithWhereUniqueWithoutProblemInput | HackathonProblemUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: HackathonProblemCreateManyProblemInputEnvelope
+    set?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    disconnect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    delete?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    update?: HackathonProblemUpdateWithWhereUniqueWithoutProblemInput | HackathonProblemUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: HackathonProblemUpdateManyWithWhereWithoutProblemInput | HackathonProblemUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSubmissionInput = {
@@ -12309,6 +16964,202 @@ export namespace Prisma {
     upsert?: ProblemUpsertWithoutProblemsPlaylistsInput
     connect?: ProblemWhereUniqueInput
     update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProblemsPlaylistsInput, ProblemUpdateWithoutProblemsPlaylistsInput>, ProblemUncheckedUpdateWithoutProblemsPlaylistsInput>
+  }
+
+  export type UserCreateNestedOneWithoutOrgInput = {
+    create?: XOR<UserCreateWithoutOrgInput, UserUncheckedCreateWithoutOrgInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrgInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type HackathonProblemCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput> | HackathonProblemCreateWithoutHackathonInput[] | HackathonProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutHackathonInput | HackathonProblemCreateOrConnectWithoutHackathonInput[]
+    createMany?: HackathonProblemCreateManyHackathonInputEnvelope
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+  }
+
+  export type HackathonParticipantCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput> | HackathonParticipantCreateWithoutHackathonInput[] | HackathonParticipantUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutHackathonInput | HackathonParticipantCreateOrConnectWithoutHackathonInput[]
+    createMany?: HackathonParticipantCreateManyHackathonInputEnvelope
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+  }
+
+  export type ProblemCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput> | ProblemCreateWithoutHackathonInput[] | ProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonInput | ProblemCreateOrConnectWithoutHackathonInput[]
+    createMany?: ProblemCreateManyHackathonInputEnvelope
+    connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+  }
+
+  export type HackathonProblemUncheckedCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput> | HackathonProblemCreateWithoutHackathonInput[] | HackathonProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutHackathonInput | HackathonProblemCreateOrConnectWithoutHackathonInput[]
+    createMany?: HackathonProblemCreateManyHackathonInputEnvelope
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+  }
+
+  export type HackathonParticipantUncheckedCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput> | HackathonParticipantCreateWithoutHackathonInput[] | HackathonParticipantUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutHackathonInput | HackathonParticipantCreateOrConnectWithoutHackathonInput[]
+    createMany?: HackathonParticipantCreateManyHackathonInputEnvelope
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+  }
+
+  export type ProblemUncheckedCreateNestedManyWithoutHackathonInput = {
+    create?: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput> | ProblemCreateWithoutHackathonInput[] | ProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonInput | ProblemCreateOrConnectWithoutHackathonInput[]
+    createMany?: ProblemCreateManyHackathonInputEnvelope
+    connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutOrgNestedInput = {
+    create?: XOR<UserCreateWithoutOrgInput, UserUncheckedCreateWithoutOrgInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrgInput
+    upsert?: UserUpsertWithoutOrgInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrgInput, UserUpdateWithoutOrgInput>, UserUncheckedUpdateWithoutOrgInput>
+  }
+
+  export type HackathonProblemUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput> | HackathonProblemCreateWithoutHackathonInput[] | HackathonProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutHackathonInput | HackathonProblemCreateOrConnectWithoutHackathonInput[]
+    upsert?: HackathonProblemUpsertWithWhereUniqueWithoutHackathonInput | HackathonProblemUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: HackathonProblemCreateManyHackathonInputEnvelope
+    set?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    disconnect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    delete?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    update?: HackathonProblemUpdateWithWhereUniqueWithoutHackathonInput | HackathonProblemUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: HackathonProblemUpdateManyWithWhereWithoutHackathonInput | HackathonProblemUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
+  }
+
+  export type HackathonParticipantUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput> | HackathonParticipantCreateWithoutHackathonInput[] | HackathonParticipantUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutHackathonInput | HackathonParticipantCreateOrConnectWithoutHackathonInput[]
+    upsert?: HackathonParticipantUpsertWithWhereUniqueWithoutHackathonInput | HackathonParticipantUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: HackathonParticipantCreateManyHackathonInputEnvelope
+    set?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    disconnect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    delete?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    update?: HackathonParticipantUpdateWithWhereUniqueWithoutHackathonInput | HackathonParticipantUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: HackathonParticipantUpdateManyWithWhereWithoutHackathonInput | HackathonParticipantUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+  }
+
+  export type ProblemUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput> | ProblemCreateWithoutHackathonInput[] | ProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonInput | ProblemCreateOrConnectWithoutHackathonInput[]
+    upsert?: ProblemUpsertWithWhereUniqueWithoutHackathonInput | ProblemUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: ProblemCreateManyHackathonInputEnvelope
+    set?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    disconnect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    delete?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    update?: ProblemUpdateWithWhereUniqueWithoutHackathonInput | ProblemUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: ProblemUpdateManyWithWhereWithoutHackathonInput | ProblemUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
+  }
+
+  export type HackathonProblemUncheckedUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput> | HackathonProblemCreateWithoutHackathonInput[] | HackathonProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonProblemCreateOrConnectWithoutHackathonInput | HackathonProblemCreateOrConnectWithoutHackathonInput[]
+    upsert?: HackathonProblemUpsertWithWhereUniqueWithoutHackathonInput | HackathonProblemUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: HackathonProblemCreateManyHackathonInputEnvelope
+    set?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    disconnect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    delete?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    connect?: HackathonProblemWhereUniqueInput | HackathonProblemWhereUniqueInput[]
+    update?: HackathonProblemUpdateWithWhereUniqueWithoutHackathonInput | HackathonProblemUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: HackathonProblemUpdateManyWithWhereWithoutHackathonInput | HackathonProblemUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
+  }
+
+  export type HackathonParticipantUncheckedUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput> | HackathonParticipantCreateWithoutHackathonInput[] | HackathonParticipantUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: HackathonParticipantCreateOrConnectWithoutHackathonInput | HackathonParticipantCreateOrConnectWithoutHackathonInput[]
+    upsert?: HackathonParticipantUpsertWithWhereUniqueWithoutHackathonInput | HackathonParticipantUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: HackathonParticipantCreateManyHackathonInputEnvelope
+    set?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    disconnect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    delete?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    connect?: HackathonParticipantWhereUniqueInput | HackathonParticipantWhereUniqueInput[]
+    update?: HackathonParticipantUpdateWithWhereUniqueWithoutHackathonInput | HackathonParticipantUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: HackathonParticipantUpdateManyWithWhereWithoutHackathonInput | HackathonParticipantUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+  }
+
+  export type ProblemUncheckedUpdateManyWithoutHackathonNestedInput = {
+    create?: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput> | ProblemCreateWithoutHackathonInput[] | ProblemUncheckedCreateWithoutHackathonInput[]
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonInput | ProblemCreateOrConnectWithoutHackathonInput[]
+    upsert?: ProblemUpsertWithWhereUniqueWithoutHackathonInput | ProblemUpsertWithWhereUniqueWithoutHackathonInput[]
+    createMany?: ProblemCreateManyHackathonInputEnvelope
+    set?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    disconnect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    delete?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
+    update?: ProblemUpdateWithWhereUniqueWithoutHackathonInput | ProblemUpdateWithWhereUniqueWithoutHackathonInput[]
+    updateMany?: ProblemUpdateManyWithWhereWithoutHackathonInput | ProblemUpdateManyWithWhereWithoutHackathonInput[]
+    deleteMany?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
+  }
+
+  export type HackathonCreateNestedOneWithoutProblemsInput = {
+    create?: XOR<HackathonCreateWithoutProblemsInput, HackathonUncheckedCreateWithoutProblemsInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutProblemsInput
+    connect?: HackathonWhereUniqueInput
+  }
+
+  export type ProblemCreateNestedOneWithoutHackathonProblemInput = {
+    create?: XOR<ProblemCreateWithoutHackathonProblemInput, ProblemUncheckedCreateWithoutHackathonProblemInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonProblemInput
+    connect?: ProblemWhereUniqueInput
+  }
+
+  export type HackathonUpdateOneRequiredWithoutProblemsNestedInput = {
+    create?: XOR<HackathonCreateWithoutProblemsInput, HackathonUncheckedCreateWithoutProblemsInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutProblemsInput
+    upsert?: HackathonUpsertWithoutProblemsInput
+    connect?: HackathonWhereUniqueInput
+    update?: XOR<XOR<HackathonUpdateToOneWithWhereWithoutProblemsInput, HackathonUpdateWithoutProblemsInput>, HackathonUncheckedUpdateWithoutProblemsInput>
+  }
+
+  export type ProblemUpdateOneRequiredWithoutHackathonProblemNestedInput = {
+    create?: XOR<ProblemCreateWithoutHackathonProblemInput, ProblemUncheckedCreateWithoutHackathonProblemInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutHackathonProblemInput
+    upsert?: ProblemUpsertWithoutHackathonProblemInput
+    connect?: ProblemWhereUniqueInput
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutHackathonProblemInput, ProblemUpdateWithoutHackathonProblemInput>, ProblemUncheckedUpdateWithoutHackathonProblemInput>
+  }
+
+  export type HackathonCreateNestedOneWithoutParticipantsInput = {
+    create?: XOR<HackathonCreateWithoutParticipantsInput, HackathonUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutParticipantsInput
+    connect?: HackathonWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutHackathonParticipantInput = {
+    create?: XOR<UserCreateWithoutHackathonParticipantInput, UserUncheckedCreateWithoutHackathonParticipantInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHackathonParticipantInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type HackathonUpdateOneRequiredWithoutParticipantsNestedInput = {
+    create?: XOR<HackathonCreateWithoutParticipantsInput, HackathonUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: HackathonCreateOrConnectWithoutParticipantsInput
+    upsert?: HackathonUpsertWithoutParticipantsInput
+    connect?: HackathonWhereUniqueInput
+    update?: XOR<XOR<HackathonUpdateToOneWithWhereWithoutParticipantsInput, HackathonUpdateWithoutParticipantsInput>, HackathonUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutHackathonParticipantNestedInput = {
+    create?: XOR<UserCreateWithoutHackathonParticipantInput, UserUncheckedCreateWithoutHackathonParticipantInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHackathonParticipantInput
+    upsert?: UserUpsertWithoutHackathonParticipantInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHackathonParticipantInput, UserUpdateWithoutHackathonParticipantInput>, UserUncheckedUpdateWithoutHackathonParticipantInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -12532,9 +17383,11 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutUserInput = {
@@ -12543,6 +17396,7 @@ export namespace Prisma {
     description: string
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -12555,6 +17409,7 @@ export namespace Prisma {
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutUserInput = {
@@ -12663,6 +17518,66 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type HackathonCreateWithoutOrgInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: HackathonProblemCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUncheckedCreateWithoutOrgInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: HackathonProblemUncheckedCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantUncheckedCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemUncheckedCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonCreateOrConnectWithoutOrgInput = {
+    where: HackathonWhereUniqueInput
+    create: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput>
+  }
+
+  export type HackathonCreateManyOrgInputEnvelope = {
+    data: HackathonCreateManyOrgInput | HackathonCreateManyOrgInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HackathonParticipantCreateWithoutUserInput = {
+    id?: string
+    score?: number
+    joinedAt?: Date | string
+    hackathon: HackathonCreateNestedOneWithoutParticipantsInput
+  }
+
+  export type HackathonParticipantUncheckedCreateWithoutUserInput = {
+    id?: string
+    hackathonId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
+  export type HackathonParticipantCreateOrConnectWithoutUserInput = {
+    where: HackathonParticipantWhereUniqueInput
+    create: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type HackathonParticipantCreateManyUserInputEnvelope = {
+    data: HackathonParticipantCreateManyUserInput | HackathonParticipantCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProblemUpsertWithWhereUniqueWithoutUserInput = {
     where: ProblemWhereUniqueInput
     update: XOR<ProblemUpdateWithoutUserInput, ProblemUncheckedUpdateWithoutUserInput>
@@ -12689,6 +17604,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Problem">
     userId?: StringFilter<"Problem"> | string
+    hackathonId?: StringNullableFilter<"Problem"> | string | null
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
     hints?: StringNullableFilter<"Problem"> | string | null
@@ -12791,6 +17707,63 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
   }
 
+  export type HackathonUpsertWithWhereUniqueWithoutOrgInput = {
+    where: HackathonWhereUniqueInput
+    update: XOR<HackathonUpdateWithoutOrgInput, HackathonUncheckedUpdateWithoutOrgInput>
+    create: XOR<HackathonCreateWithoutOrgInput, HackathonUncheckedCreateWithoutOrgInput>
+  }
+
+  export type HackathonUpdateWithWhereUniqueWithoutOrgInput = {
+    where: HackathonWhereUniqueInput
+    data: XOR<HackathonUpdateWithoutOrgInput, HackathonUncheckedUpdateWithoutOrgInput>
+  }
+
+  export type HackathonUpdateManyWithWhereWithoutOrgInput = {
+    where: HackathonScalarWhereInput
+    data: XOR<HackathonUpdateManyMutationInput, HackathonUncheckedUpdateManyWithoutOrgInput>
+  }
+
+  export type HackathonScalarWhereInput = {
+    AND?: HackathonScalarWhereInput | HackathonScalarWhereInput[]
+    OR?: HackathonScalarWhereInput[]
+    NOT?: HackathonScalarWhereInput | HackathonScalarWhereInput[]
+    id?: StringFilter<"Hackathon"> | string
+    name?: StringFilter<"Hackathon"> | string
+    description?: StringNullableFilter<"Hackathon"> | string | null
+    orgId?: StringFilter<"Hackathon"> | string
+    startTime?: DateTimeFilter<"Hackathon"> | Date | string
+    endTime?: DateTimeFilter<"Hackathon"> | Date | string
+    createdAt?: DateTimeFilter<"Hackathon"> | Date | string
+    updatedAt?: DateTimeFilter<"Hackathon"> | Date | string
+  }
+
+  export type HackathonParticipantUpsertWithWhereUniqueWithoutUserInput = {
+    where: HackathonParticipantWhereUniqueInput
+    update: XOR<HackathonParticipantUpdateWithoutUserInput, HackathonParticipantUncheckedUpdateWithoutUserInput>
+    create: XOR<HackathonParticipantCreateWithoutUserInput, HackathonParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type HackathonParticipantUpdateWithWhereUniqueWithoutUserInput = {
+    where: HackathonParticipantWhereUniqueInput
+    data: XOR<HackathonParticipantUpdateWithoutUserInput, HackathonParticipantUncheckedUpdateWithoutUserInput>
+  }
+
+  export type HackathonParticipantUpdateManyWithWhereWithoutUserInput = {
+    where: HackathonParticipantScalarWhereInput
+    data: XOR<HackathonParticipantUpdateManyMutationInput, HackathonParticipantUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type HackathonParticipantScalarWhereInput = {
+    AND?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+    OR?: HackathonParticipantScalarWhereInput[]
+    NOT?: HackathonParticipantScalarWhereInput | HackathonParticipantScalarWhereInput[]
+    id?: StringFilter<"HackathonParticipant"> | string
+    userId?: StringFilter<"HackathonParticipant"> | string
+    hackathonId?: StringFilter<"HackathonParticipant"> | string
+    score?: IntFilter<"HackathonParticipant"> | number
+    joinedAt?: DateTimeFilter<"HackathonParticipant"> | Date | string
+  }
+
   export type UserCreateWithoutProblemsInput = {
     id?: string
     name?: string | null
@@ -12798,11 +17771,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submission?: SubmissionCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlist?: PlaylistCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemsInput = {
@@ -12812,16 +17792,54 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
+  }
+
+  export type HackathonCreateWithoutProblemListInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    org: UserCreateNestedOneWithoutOrgInput
+    problems?: HackathonProblemCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUncheckedCreateWithoutProblemListInput = {
+    id?: string
+    name: string
+    description?: string | null
+    orgId: string
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: HackathonProblemUncheckedCreateNestedManyWithoutHackathonInput
+    participants?: HackathonParticipantUncheckedCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonCreateOrConnectWithoutProblemListInput = {
+    where: HackathonWhereUniqueInput
+    create: XOR<HackathonCreateWithoutProblemListInput, HackathonUncheckedCreateWithoutProblemListInput>
   }
 
   export type SubmissionCreateWithoutProblemInput = {
@@ -12916,6 +17934,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type HackathonProblemCreateWithoutProblemInput = {
+    id?: string
+    hackathon: HackathonCreateNestedOneWithoutProblemsInput
+  }
+
+  export type HackathonProblemUncheckedCreateWithoutProblemInput = {
+    id?: string
+    hackathonId: string
+  }
+
+  export type HackathonProblemCreateOrConnectWithoutProblemInput = {
+    where: HackathonProblemWhereUniqueInput
+    create: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput>
+  }
+
+  export type HackathonProblemCreateManyProblemInputEnvelope = {
+    data: HackathonProblemCreateManyProblemInput | HackathonProblemCreateManyProblemInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutProblemsInput = {
     update: XOR<UserUpdateWithoutProblemsInput, UserUncheckedUpdateWithoutProblemsInput>
     create: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
@@ -12934,11 +17972,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemsInput = {
@@ -12948,11 +17993,55 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type HackathonUpsertWithoutProblemListInput = {
+    update: XOR<HackathonUpdateWithoutProblemListInput, HackathonUncheckedUpdateWithoutProblemListInput>
+    create: XOR<HackathonCreateWithoutProblemListInput, HackathonUncheckedCreateWithoutProblemListInput>
+    where?: HackathonWhereInput
+  }
+
+  export type HackathonUpdateToOneWithWhereWithoutProblemListInput = {
+    where?: HackathonWhereInput
+    data: XOR<HackathonUpdateWithoutProblemListInput, HackathonUncheckedUpdateWithoutProblemListInput>
+  }
+
+  export type HackathonUpdateWithoutProblemListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    org?: UserUpdateOneRequiredWithoutOrgNestedInput
+    problems?: HackathonProblemUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateWithoutProblemListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    orgId?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: HackathonProblemUncheckedUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUncheckedUpdateManyWithoutHackathonNestedInput
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutProblemInput = {
@@ -13014,6 +18103,31 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
   }
 
+  export type HackathonProblemUpsertWithWhereUniqueWithoutProblemInput = {
+    where: HackathonProblemWhereUniqueInput
+    update: XOR<HackathonProblemUpdateWithoutProblemInput, HackathonProblemUncheckedUpdateWithoutProblemInput>
+    create: XOR<HackathonProblemCreateWithoutProblemInput, HackathonProblemUncheckedCreateWithoutProblemInput>
+  }
+
+  export type HackathonProblemUpdateWithWhereUniqueWithoutProblemInput = {
+    where: HackathonProblemWhereUniqueInput
+    data: XOR<HackathonProblemUpdateWithoutProblemInput, HackathonProblemUncheckedUpdateWithoutProblemInput>
+  }
+
+  export type HackathonProblemUpdateManyWithWhereWithoutProblemInput = {
+    where: HackathonProblemScalarWhereInput
+    data: XOR<HackathonProblemUpdateManyMutationInput, HackathonProblemUncheckedUpdateManyWithoutProblemInput>
+  }
+
+  export type HackathonProblemScalarWhereInput = {
+    AND?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
+    OR?: HackathonProblemScalarWhereInput[]
+    NOT?: HackathonProblemScalarWhereInput | HackathonProblemScalarWhereInput[]
+    id?: StringFilter<"HackathonProblem"> | string
+    problemId?: StringFilter<"HackathonProblem"> | string
+    hackathonId?: StringFilter<"HackathonProblem"> | string
+  }
+
   export type UserCreateWithoutSubmissionInput = {
     id?: string
     name?: string | null
@@ -13021,11 +18135,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlist?: PlaylistCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubmissionInput = {
@@ -13035,11 +18156,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubmissionInput = {
@@ -13063,8 +18191,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSubmissionInput = {
@@ -13074,6 +18204,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
     userId: string
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -13085,6 +18216,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSubmissionInput = {
@@ -13150,11 +18282,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubmissionInput = {
@@ -13164,11 +18303,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSubmissionInput = {
@@ -13198,8 +18344,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSubmissionInput = {
@@ -13209,6 +18357,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13220,6 +18369,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput = {
@@ -13348,11 +18498,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     submission?: SubmissionCreateNestedManyWithoutUserInput
     playlist?: PlaylistCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemSolvedInput = {
@@ -13362,11 +18519,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemSolvedInput = {
@@ -13390,8 +18554,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSolvedByInput = {
@@ -13401,6 +18567,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
     userId: string
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -13412,6 +18579,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSolvedByInput = {
@@ -13437,11 +18605,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemSolvedInput = {
@@ -13451,11 +18626,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSolvedByInput = {
@@ -13485,8 +18667,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSolvedByInput = {
@@ -13496,6 +18680,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13507,6 +18692,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemInPlaylistCreateWithoutPlaylistInput = {
@@ -13540,11 +18726,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     submission?: SubmissionCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPlaylistInput = {
@@ -13554,11 +18747,18 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPlaylistInput = {
@@ -13600,11 +18800,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPlaylistInput = {
@@ -13614,11 +18821,18 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PlaylistCreateWithoutProblemsInput = {
@@ -13660,8 +18874,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutProblemsPlaylistsInput = {
@@ -13671,6 +18887,7 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
     userId: string
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -13682,6 +18899,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutProblemsPlaylistsInput = {
@@ -13745,8 +18963,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutProblemsPlaylistsInput = {
@@ -13756,6 +18976,7 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13767,6 +18988,593 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type UserCreateWithoutOrgInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemCreateNestedManyWithoutUserInput
+    submission?: SubmissionCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlist?: PlaylistCreateNestedManyWithoutUserInput
+    hackathonParticipant?: HackathonParticipantCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutOrgInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
+    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    hackathonParticipant?: HackathonParticipantUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutOrgInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOrgInput, UserUncheckedCreateWithoutOrgInput>
+  }
+
+  export type HackathonProblemCreateWithoutHackathonInput = {
+    id?: string
+    problem: ProblemCreateNestedOneWithoutHackathonProblemInput
+  }
+
+  export type HackathonProblemUncheckedCreateWithoutHackathonInput = {
+    id?: string
+    problemId: string
+  }
+
+  export type HackathonProblemCreateOrConnectWithoutHackathonInput = {
+    where: HackathonProblemWhereUniqueInput
+    create: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type HackathonProblemCreateManyHackathonInputEnvelope = {
+    data: HackathonProblemCreateManyHackathonInput | HackathonProblemCreateManyHackathonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HackathonParticipantCreateWithoutHackathonInput = {
+    id?: string
+    score?: number
+    joinedAt?: Date | string
+    user: UserCreateNestedOneWithoutHackathonParticipantInput
+  }
+
+  export type HackathonParticipantUncheckedCreateWithoutHackathonInput = {
+    id?: string
+    userId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
+  export type HackathonParticipantCreateOrConnectWithoutHackathonInput = {
+    where: HackathonParticipantWhereUniqueInput
+    create: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type HackathonParticipantCreateManyHackathonInputEnvelope = {
+    data: HackathonParticipantCreateManyHackathonInput | HackathonParticipantCreateManyHackathonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProblemCreateWithoutHackathonInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProblemsInput
+    submission?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemUncheckedCreateWithoutHackathonInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    hackathonProblem?: HackathonProblemUncheckedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemCreateOrConnectWithoutHackathonInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type ProblemCreateManyHackathonInputEnvelope = {
+    data: ProblemCreateManyHackathonInput | ProblemCreateManyHackathonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutOrgInput = {
+    update: XOR<UserUpdateWithoutOrgInput, UserUncheckedUpdateWithoutOrgInput>
+    create: XOR<UserCreateWithoutOrgInput, UserUncheckedCreateWithoutOrgInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOrgInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOrgInput, UserUncheckedUpdateWithoutOrgInput>
+  }
+
+  export type UserUpdateWithoutOrgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    hackathonParticipant?: HackathonParticipantUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOrgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    hackathonParticipant?: HackathonParticipantUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type HackathonProblemUpsertWithWhereUniqueWithoutHackathonInput = {
+    where: HackathonProblemWhereUniqueInput
+    update: XOR<HackathonProblemUpdateWithoutHackathonInput, HackathonProblemUncheckedUpdateWithoutHackathonInput>
+    create: XOR<HackathonProblemCreateWithoutHackathonInput, HackathonProblemUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type HackathonProblemUpdateWithWhereUniqueWithoutHackathonInput = {
+    where: HackathonProblemWhereUniqueInput
+    data: XOR<HackathonProblemUpdateWithoutHackathonInput, HackathonProblemUncheckedUpdateWithoutHackathonInput>
+  }
+
+  export type HackathonProblemUpdateManyWithWhereWithoutHackathonInput = {
+    where: HackathonProblemScalarWhereInput
+    data: XOR<HackathonProblemUpdateManyMutationInput, HackathonProblemUncheckedUpdateManyWithoutHackathonInput>
+  }
+
+  export type HackathonParticipantUpsertWithWhereUniqueWithoutHackathonInput = {
+    where: HackathonParticipantWhereUniqueInput
+    update: XOR<HackathonParticipantUpdateWithoutHackathonInput, HackathonParticipantUncheckedUpdateWithoutHackathonInput>
+    create: XOR<HackathonParticipantCreateWithoutHackathonInput, HackathonParticipantUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type HackathonParticipantUpdateWithWhereUniqueWithoutHackathonInput = {
+    where: HackathonParticipantWhereUniqueInput
+    data: XOR<HackathonParticipantUpdateWithoutHackathonInput, HackathonParticipantUncheckedUpdateWithoutHackathonInput>
+  }
+
+  export type HackathonParticipantUpdateManyWithWhereWithoutHackathonInput = {
+    where: HackathonParticipantScalarWhereInput
+    data: XOR<HackathonParticipantUpdateManyMutationInput, HackathonParticipantUncheckedUpdateManyWithoutHackathonInput>
+  }
+
+  export type ProblemUpsertWithWhereUniqueWithoutHackathonInput = {
+    where: ProblemWhereUniqueInput
+    update: XOR<ProblemUpdateWithoutHackathonInput, ProblemUncheckedUpdateWithoutHackathonInput>
+    create: XOR<ProblemCreateWithoutHackathonInput, ProblemUncheckedCreateWithoutHackathonInput>
+  }
+
+  export type ProblemUpdateWithWhereUniqueWithoutHackathonInput = {
+    where: ProblemWhereUniqueInput
+    data: XOR<ProblemUpdateWithoutHackathonInput, ProblemUncheckedUpdateWithoutHackathonInput>
+  }
+
+  export type ProblemUpdateManyWithWhereWithoutHackathonInput = {
+    where: ProblemScalarWhereInput
+    data: XOR<ProblemUpdateManyMutationInput, ProblemUncheckedUpdateManyWithoutHackathonInput>
+  }
+
+  export type HackathonCreateWithoutProblemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    org: UserCreateNestedOneWithoutOrgInput
+    participants?: HackathonParticipantCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUncheckedCreateWithoutProblemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    orgId: string
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    participants?: HackathonParticipantUncheckedCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemUncheckedCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonCreateOrConnectWithoutProblemsInput = {
+    where: HackathonWhereUniqueInput
+    create: XOR<HackathonCreateWithoutProblemsInput, HackathonUncheckedCreateWithoutProblemsInput>
+  }
+
+  export type ProblemCreateWithoutHackathonProblemInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProblemsInput
+    hackathon?: HackathonCreateNestedOneWithoutProblemListInput
+    submission?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemUncheckedCreateWithoutHackathonProblemInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    hackathonId?: string | null
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemCreateOrConnectWithoutHackathonProblemInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutHackathonProblemInput, ProblemUncheckedCreateWithoutHackathonProblemInput>
+  }
+
+  export type HackathonUpsertWithoutProblemsInput = {
+    update: XOR<HackathonUpdateWithoutProblemsInput, HackathonUncheckedUpdateWithoutProblemsInput>
+    create: XOR<HackathonCreateWithoutProblemsInput, HackathonUncheckedCreateWithoutProblemsInput>
+    where?: HackathonWhereInput
+  }
+
+  export type HackathonUpdateToOneWithWhereWithoutProblemsInput = {
+    where?: HackathonWhereInput
+    data: XOR<HackathonUpdateWithoutProblemsInput, HackathonUncheckedUpdateWithoutProblemsInput>
+  }
+
+  export type HackathonUpdateWithoutProblemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    org?: UserUpdateOneRequiredWithoutOrgNestedInput
+    participants?: HackathonParticipantUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateWithoutProblemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    orgId?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: HackathonParticipantUncheckedUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUncheckedUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type ProblemUpsertWithoutHackathonProblemInput = {
+    update: XOR<ProblemUpdateWithoutHackathonProblemInput, ProblemUncheckedUpdateWithoutHackathonProblemInput>
+    create: XOR<ProblemCreateWithoutHackathonProblemInput, ProblemUncheckedCreateWithoutHackathonProblemInput>
+    where?: ProblemWhereInput
+  }
+
+  export type ProblemUpdateToOneWithWhereWithoutHackathonProblemInput = {
+    where?: ProblemWhereInput
+    data: XOR<ProblemUpdateWithoutHackathonProblemInput, ProblemUncheckedUpdateWithoutHackathonProblemInput>
+  }
+
+  export type ProblemUpdateWithoutHackathonProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
+    submission?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateWithoutHackathonProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type HackathonCreateWithoutParticipantsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    org: UserCreateNestedOneWithoutOrgInput
+    problems?: HackathonProblemCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonUncheckedCreateWithoutParticipantsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    orgId: string
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: HackathonProblemUncheckedCreateNestedManyWithoutHackathonInput
+    problemList?: ProblemUncheckedCreateNestedManyWithoutHackathonInput
+  }
+
+  export type HackathonCreateOrConnectWithoutParticipantsInput = {
+    where: HackathonWhereUniqueInput
+    create: XOR<HackathonCreateWithoutParticipantsInput, HackathonUncheckedCreateWithoutParticipantsInput>
+  }
+
+  export type UserCreateWithoutHackathonParticipantInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemCreateNestedManyWithoutUserInput
+    submission?: SubmissionCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlist?: PlaylistCreateNestedManyWithoutUserInput
+    org?: HackathonCreateNestedManyWithoutOrgInput
+  }
+
+  export type UserUncheckedCreateWithoutHackathonParticipantInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    orgName?: string | null
+    orgSize?: string | null
+    orgcountry?: string | null
+    orgWebsite?: string | null
+    orgphone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
+    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlist?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    org?: HackathonUncheckedCreateNestedManyWithoutOrgInput
+  }
+
+  export type UserCreateOrConnectWithoutHackathonParticipantInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutHackathonParticipantInput, UserUncheckedCreateWithoutHackathonParticipantInput>
+  }
+
+  export type HackathonUpsertWithoutParticipantsInput = {
+    update: XOR<HackathonUpdateWithoutParticipantsInput, HackathonUncheckedUpdateWithoutParticipantsInput>
+    create: XOR<HackathonCreateWithoutParticipantsInput, HackathonUncheckedCreateWithoutParticipantsInput>
+    where?: HackathonWhereInput
+  }
+
+  export type HackathonUpdateToOneWithWhereWithoutParticipantsInput = {
+    where?: HackathonWhereInput
+    data: XOR<HackathonUpdateWithoutParticipantsInput, HackathonUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type HackathonUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    org?: UserUpdateOneRequiredWithoutOrgNestedInput
+    problems?: HackathonProblemUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    orgId?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: HackathonProblemUncheckedUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUncheckedUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type UserUpsertWithoutHackathonParticipantInput = {
+    update: XOR<UserUpdateWithoutHackathonParticipantInput, UserUncheckedUpdateWithoutHackathonParticipantInput>
+    create: XOR<UserCreateWithoutHackathonParticipantInput, UserUncheckedCreateWithoutHackathonParticipantInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutHackathonParticipantInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutHackathonParticipantInput, UserUncheckedUpdateWithoutHackathonParticipantInput>
+  }
+
+  export type UserUpdateWithoutHackathonParticipantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlist?: PlaylistUpdateManyWithoutUserNestedInput
+    org?: HackathonUpdateManyWithoutOrgNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutHackathonParticipantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    orgName?: NullableStringFieldUpdateOperationsInput | string | null
+    orgSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orgcountry?: NullableStringFieldUpdateOperationsInput | string | null
+    orgWebsite?: NullableStringFieldUpdateOperationsInput | string | null
+    orgphone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlist?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    org?: HackathonUncheckedUpdateManyWithoutOrgNestedInput
   }
 
   export type ProblemCreateManyUserInput = {
@@ -13775,6 +19583,7 @@ export namespace Prisma {
     description: string
     difficulty: $Enums.Difficulty
     tags?: ProblemCreatetagsInput | string[]
+    hackathonId?: string | null
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
     hints?: string | null
@@ -13817,6 +19626,23 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type HackathonCreateManyOrgInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: Date | string
+    endTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HackathonParticipantCreateManyUserInput = {
+    id?: string
+    hackathonId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
   export type ProblemUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -13832,9 +19658,11 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hackathon?: HackathonUpdateOneWithoutProblemListNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutUserInput = {
@@ -13843,6 +19671,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13855,6 +19684,7 @@ export namespace Prisma {
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateManyWithoutUserInput = {
@@ -13863,6 +19693,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: ProblemUpdatetagsInput | string[]
+    hackathonId?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
     hints?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13971,6 +19802,63 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HackathonUpdateWithoutOrgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: HackathonProblemUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateWithoutOrgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: HackathonProblemUncheckedUpdateManyWithoutHackathonNestedInput
+    participants?: HackathonParticipantUncheckedUpdateManyWithoutHackathonNestedInput
+    problemList?: ProblemUncheckedUpdateManyWithoutHackathonNestedInput
+  }
+
+  export type HackathonUncheckedUpdateManyWithoutOrgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonParticipantUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hackathon?: HackathonUpdateOneRequiredWithoutParticipantsNestedInput
+  }
+
+  export type HackathonParticipantUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonParticipantUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SubmissionCreateManyProblemInput = {
     id?: string
     userId: string
@@ -13999,6 +19887,11 @@ export namespace Prisma {
     playListId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type HackathonProblemCreateManyProblemInput = {
+    id?: string
+    hackathonId: string
   }
 
   export type SubmissionUpdateWithoutProblemInput = {
@@ -14093,6 +19986,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HackathonProblemUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathon?: HackathonUpdateOneRequiredWithoutProblemsNestedInput
+  }
+
+  export type HackathonProblemUncheckedUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonProblemUncheckedUpdateManyWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hackathonId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type TestCaseResultCreateManySubmissionInput = {
     id?: string
     testCase: number
@@ -14177,6 +20085,134 @@ export namespace Prisma {
   export type ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonProblemCreateManyHackathonInput = {
+    id?: string
+    problemId: string
+  }
+
+  export type HackathonParticipantCreateManyHackathonInput = {
+    id?: string
+    userId: string
+    score?: number
+    joinedAt?: Date | string
+  }
+
+  export type ProblemCreateManyHackathonInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HackathonProblemUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problem?: ProblemUpdateOneRequiredWithoutHackathonProblemNestedInput
+  }
+
+  export type HackathonProblemUncheckedUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonProblemUncheckedUpdateManyWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HackathonParticipantUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutHackathonParticipantNestedInput
+  }
+
+  export type HackathonParticipantUncheckedUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HackathonParticipantUncheckedUpdateManyWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    submission?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    hackathonProblem?: HackathonProblemUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateManyWithoutHackathonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

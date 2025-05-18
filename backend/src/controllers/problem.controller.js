@@ -230,11 +230,10 @@ export const getAllProblemsSolvedByUser = async (req, res) => {
                 }
             }
         })
-
         res.status(200).json({
             success: true,
             message: "Problems fetched successfully",
-            problems
+            problem
         })
     } catch (error) {
         console.error("Error fetching problems : ",error);

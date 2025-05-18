@@ -1,5 +1,5 @@
 import { db } from "../libs/db.js";
-import { pollBatchResults, submitBatch } from "../libs/judge0.lib.js";
+import { getLanguageName, pollBatchResults, submitBatch } from "../libs/judge0.lib.js";
 
 export const executeCode = async (req, res) => {
     try {
@@ -113,7 +113,7 @@ export const executeCode = async (req, res) => {
             time: result.time
         }))
 
-        await db.testCaseResults.createMany({
+        await db.testCaseResult.createMany({
             data:testCaseResults 
         })
 
@@ -132,6 +132,9 @@ export const executeCode = async (req, res) => {
             submission: submissionWithTestCase
         })
     } catch (error) {
-
+        console.error("Error executing code : ",error);
+        return res.status(500).json({
+            error: "Failed to execute code"
+        })
     }
 }

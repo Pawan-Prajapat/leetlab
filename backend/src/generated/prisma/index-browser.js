@@ -124,6 +124,11 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image',
   role: 'role',
   password: 'password',
+  orgName: 'orgName',
+  orgSize: 'orgSize',
+  orgcountry: 'orgcountry',
+  orgWebsite: 'orgWebsite',
+  orgphone: 'orgphone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -135,6 +140,7 @@ exports.Prisma.ProblemScalarFieldEnum = {
   difficulty: 'difficulty',
   tags: 'tags',
   userId: 'userId',
+  hackathonId: 'hackathonId',
   examples: 'examples',
   constraints: 'constraints',
   hints: 'hints',
@@ -204,6 +210,31 @@ exports.Prisma.ProblemInPlaylistScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.HackathonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  orgId: 'orgId',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.HackathonProblemScalarFieldEnum = {
+  id: 'id',
+  problemId: 'problemId',
+  hackathonId: 'hackathonId'
+};
+
+exports.Prisma.HackathonParticipantScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  hackathonId: 'hackathonId',
+  score: 'score',
+  joinedAt: 'joinedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -230,7 +261,8 @@ exports.Prisma.JsonNullValueFilter = {
 };
 exports.UserRole = exports.$Enums.UserRole = {
   ADMIN: 'ADMIN',
-  USER: 'USER'
+  USER: 'USER',
+  ORG: 'ORG'
 };
 
 exports.Difficulty = exports.$Enums.Difficulty = {
@@ -246,7 +278,10 @@ exports.Prisma.ModelName = {
   TestCaseResult: 'TestCaseResult',
   ProblemSolved: 'ProblemSolved',
   Playlist: 'Playlist',
-  ProblemInPlaylist: 'ProblemInPlaylist'
+  ProblemInPlaylist: 'ProblemInPlaylist',
+  Hackathon: 'Hackathon',
+  HackathonProblem: 'HackathonProblem',
+  HackathonParticipant: 'HackathonParticipant'
 };
 
 /**
